@@ -18,6 +18,11 @@ public static class StudentLayer
                     JOIN Department ON Student.Dept_Id = Department.Dept_Id";
         return DataAccessLayer.SelectCommand(s);
     }
+    public static DataSet SelectStudentsWithoutDept()
+    {
+        string s = @"Select * From Department";
+        return DataAccessLayer.SelectCommand(s);
+    }
     public static int InsertStudent(string St_Name, int? St_Age, string St_Address,int? Dept_Id)
     {
         string s = "Insert_Student";

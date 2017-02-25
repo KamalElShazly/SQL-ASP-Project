@@ -1,7 +1,122 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage1.master" AutoEventWireup="true" CodeFile="DepartmentPage.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage1.master" AutoEventWireup="true" CodeFile="DepartmentPage.aspx.cs" Inherits="DepartmentPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <style type="text/css">
+        .auto-style6 {
+            height: 23px;
+        }
+        .auto-style7 {
+            height: 275px;
+        }
+        .auto-style8 {
+            height: 23px;
+            width: 15px;
+        }
+        .auto-style9 {
+            width: 15px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <table style="width:100%;">
+        <tr>
+            <td class="auto-style7" colspan="2">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="st_id" DataSourceID="StudentSource" ForeColor="#333333" GridLines="None">
+                    <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                    <Columns>
+                        <asp:TemplateField HeaderText="ID">
+                            <EditItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("dept_id") %>'></asp:Label>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("dept_id") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Name">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("dept_name") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("dept_name") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Manager">
+                            <EditItemTemplate>
+                                <asp:DropDownList ID="DropDownList1" runat="server">
+                                </asp:DropDownList>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("st_age") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:CommandField ShowEditButton="True" ValidationGroup="update" />
+                        <asp:CommandField ShowDeleteButton="True" />
+                    </Columns>
+                    <EditRowStyle BackColor="#999999" />
+                    <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                    <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                    <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                    <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                    <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                    <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                    <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+                </asp:GridView>
+                <asp:ObjectDataSource ID="InstructorSource" runat="server" SelectMethod="SelectAllDepartments" TypeName="DepartmentLayer"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="DepartmentSource" runat="server" DeleteMethod="DeleteStudent" InsertMethod="InsertStudent" SelectMethod="SelectAllStudents" TypeName="StudentLayer" UpdateMethod="UpdateStudent">
+                    <DeleteParameters>
+                        <asp:Parameter Name="St_Id" Type="Int32" />
+                    </DeleteParameters>
+                    <InsertParameters>
+                        <asp:Parameter Name="St_Name" Type="String" />
+                        <asp:Parameter Name="St_Age" Type="Int32" />
+                        <asp:Parameter Name="St_Address" Type="String" />
+                        <asp:Parameter Name="Dept_Id" Type="Int32" />
+                    </InsertParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="St_Id" Type="Int32" />
+                        <asp:Parameter Name="St_Name" Type="String" />
+                        <asp:Parameter Name="St_Age" Type="Int32" />
+                        <asp:Parameter Name="St_Address" Type="String" />
+                        <asp:Parameter Name="Dept_Id" Type="Int32" />
+                    </UpdateParameters>
+                </asp:ObjectDataSource>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style8">Name</td>
+            <td class="auto-style6">
+                <asp:TextBox ID="NameTxt" runat="server" Width="200px"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="Name_Validator" runat="server" ControlToValidate="NameTxt" ErrorMessage="Name Is Required" ForeColor="Red" ToolTip="Name Is Required" ValidationGroup="insert">*</asp:RequiredFieldValidator>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style9">Age</td>
+            <td>
+                <asp:TextBox ID="AgeTxt" runat="server" Width="200px"></asp:TextBox>
+                <asp:RangeValidator ID="AgeRange" runat="server" ControlToValidate="AgeTxt" ErrorMessage="Age Between 20 - 40" ForeColor="Red" MaximumValue="40" MinimumValue="20" ToolTip="Age Between 20-40" Type="Integer" ValidationGroup="insert">Age Between 20-40</asp:RangeValidator>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style9">Address</td>
+            <td>
+                <asp:TextBox ID="AddressTxt" runat="server" Width="200px"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style9">Department</td>
+            <td>
+                <asp:DropDownList ID="DepartmentList" runat="server" DataSourceID="DepartmentSource" DataTextField="dept_name" DataValueField="dept_id" Width="200px">
+                </asp:DropDownList>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style9">&nbsp;</td>
+            <td>
+                <asp:Button ID="InsertBtn" runat="server" OnClick="InsertBtn_Click" Text="Insert" ValidationGroup="insert" Width="100px" />
+            </td>
+        </tr>
+    </table>
 </asp:Content>
 
