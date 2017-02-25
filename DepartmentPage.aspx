@@ -46,7 +46,7 @@
                                 </asp:DropDownList>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("st_age") %>'></asp:Label>
+                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("Ins_Name") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:CommandField ShowEditButton="True" ValidationGroup="update" />

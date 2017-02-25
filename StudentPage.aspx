@@ -80,7 +80,7 @@
                     <SortedDescendingCellStyle BackColor="#FFFDF8" />
                     <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                 </asp:GridView>
-                <asp:ObjectDataSource ID="DepartmentSource" runat="server" SelectMethod="SelectAllDepartments" TypeName="DepartmentLayer"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="DepartmentSource" runat="server" SelectMethod="SelectDepartmentIdAndName" TypeName="DepartmentLayer"></asp:ObjectDataSource>
                 <asp:ObjectDataSource ID="StudentSource" runat="server" DeleteMethod="DeleteStudent" InsertMethod="InsertStudent" SelectMethod="SelectAllStudents" TypeName="StudentLayer" UpdateMethod="UpdateStudent">
                     <DeleteParameters>
                         <asp:Parameter Name="St_Id" Type="Int32" />

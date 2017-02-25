@@ -18,10 +18,14 @@ public static class DepartmentLayer
             JOIN Instructor ON Department.Mgr_Id = Instructor.Ins_Id";
         return DataAccessLayer.SelectCommand(s);
     }
-    public static DataSet SelectAllDepartmentsWithoutMgr()
+    public static DataSet SelectDepartmentIdAndName()
     {
-        string s = @"SELECT *
-            FROM Department";
+        string s = @"SELECT Dept_Id,Dept_Name FROM Department";
+        return DataAccessLayer.SelectCommand(s);
+    }
+    public static DataSet SelectInstructorIdAndName()
+    {
+        string s = @"SELECT Ins_Id,Ins_Name FROM Instructor";
         return DataAccessLayer.SelectCommand(s);
     }
     public static int InsertDepartment(string Dept_Name, int? Mgr_Id)
