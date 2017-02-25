@@ -9,7 +9,7 @@ using System.Data.SqlTypes;
 /// <summary>
 /// Summary description for BussinessLayer
 /// </summary>
-public static class BussinessLayer
+public static class StudentLayer
 {
     public static DataSet SelectAllStudents()
     {
@@ -23,7 +23,7 @@ public static class BussinessLayer
         string s = "Insert_Student";
         SqlParameter[] p = new SqlParameter[] { new SqlParameter("@St_Name", St_Name),
             new SqlParameter("@St_Age", St_Age??SqlInt32.Null),
-            new SqlParameter("@St_Address", St_Address) ,
+            new SqlParameter("@St_Address", St_Address??SqlString.Null) ,
             new SqlParameter("@Dept_Id", Dept_Id??SqlInt32.Null) ,
         };
         return DataAccessLayer.DMLCommandSP(s, p);
@@ -34,7 +34,7 @@ public static class BussinessLayer
         SqlParameter[] p = new SqlParameter[] { new SqlParameter("@St_Id", St_Id),
             new SqlParameter("@St_Name", St_Name),
             new SqlParameter("@St_Age", St_Age??SqlInt32.Null),
-            new SqlParameter("@St_Address", St_Address) ,
+            new SqlParameter("@St_Address", St_Address??SqlString.Null) ,
             new SqlParameter("@Dept_Id", Dept_Id??SqlInt32.Null) ,
         };
         return DataAccessLayer.DMLCommandSP(s, p);
@@ -44,12 +44,6 @@ public static class BussinessLayer
         string s = "Delete_Student";
         SqlParameter[] p = new SqlParameter[] { new SqlParameter("@St_Id", St_Id) };
         return DataAccessLayer.DMLCommandSP(s, p);
-    }
-    public static DataSet SelectAllDepartments()
-    {
-        string s = @"SELECT *
-            FROM Department";
-        return DataAccessLayer.SelectCommand(s);
     }
     public static DataSet SelectAllTopics()
     {

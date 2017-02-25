@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage1.master" AutoEventWireup="true" CodeFile="StudentView.aspx.cs" Inherits="StudentView" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage1.master" AutoEventWireup="true" CodeFile="StudentPage.aspx.cs" Inherits="StudentPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
@@ -80,8 +80,8 @@
                     <SortedDescendingCellStyle BackColor="#FFFDF8" />
                     <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                 </asp:GridView>
-                <asp:ObjectDataSource ID="DepartmentSource" runat="server" SelectMethod="SelectAllDepartments" TypeName="BussinessLayer"></asp:ObjectDataSource>
-                <asp:ObjectDataSource ID="StudentSource" runat="server" DeleteMethod="DeleteStudent" InsertMethod="InsertStudent" SelectMethod="SelectAllStudents" TypeName="BussinessLayer" UpdateMethod="UpdateStudent">
+                <asp:ObjectDataSource ID="DepartmentSource" runat="server" SelectMethod="SelectAllDepartments" TypeName="DepartmentLayer"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="StudentSource" runat="server" DeleteMethod="DeleteStudent" InsertMethod="InsertStudent" SelectMethod="SelectAllStudents" TypeName="StudentLayer" UpdateMethod="UpdateStudent">
                     <DeleteParameters>
                         <asp:Parameter Name="St_Id" Type="Int32" />
                     </DeleteParameters>
