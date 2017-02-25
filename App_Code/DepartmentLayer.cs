@@ -15,7 +15,7 @@ public static class DepartmentLayer
     {
         string s = @"SELECT Department.*,Instructor.Ins_Name
             FROM Department
-            JOIN Instructor ON Department.Mgr_Id = Instructor.Ins_Id";
+            LEFT JOIN Instructor ON Department.Mgr_Id = Instructor.Ins_Id";
         return DataAccessLayer.SelectCommand(s);
     }
     public static DataSet SelectDepartmentIdAndName()
