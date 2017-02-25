@@ -23,11 +23,6 @@ public static class DepartmentLayer
         string s = @"SELECT Dept_Id,Dept_Name FROM Department";
         return DataAccessLayer.SelectCommand(s);
     }
-    public static DataSet SelectInstructorIdAndName()
-    {
-        string s = @"SELECT Ins_Id,Ins_Name FROM Instructor";
-        return DataAccessLayer.SelectCommand(s);
-    }
     public static int InsertDepartment(string Dept_Name, int? Mgr_Id)
     {
         string s = "Insert_Department";
