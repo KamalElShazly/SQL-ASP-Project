@@ -39,8 +39,7 @@ public class TopicLayer
     public static int InsertTopic(int Top_Id, string Top_Name, int Crs_Id)
     {
         string s = "Insert_Topic";
-        SqlParameter[] p = new SqlParameter[] { new SqlParameter("@Top_Id",Top_Id ),
-            new SqlParameter("@Top_Name",Top_Name ) ,
+        SqlParameter[] p = new SqlParameter[] { new SqlParameter("@Top_Name",Top_Name ) ,
             new SqlParameter("@Crs_Id", Crs_Id) ,
         };
         return DataAccessLayer.DMLCommandSP(s,p);
