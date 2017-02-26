@@ -13,7 +13,9 @@ public class TopicLayer
 {
     public static DataSet SelectAllTopics()
     {
-        string s = "Select * from Topic";
+        string s = @"SELECT Topic.*,Course.Crs_Name
+                    FROM Topic
+                    JOIN Course ON Topic.Crs_Id = Course.Crs_Id";
         return DataAccessLayer.SelectCommand(s);
     }
     public static DataSet SelectTopicByCrsId(int Crs_Id)
@@ -39,8 +41,7 @@ public class TopicLayer
     public static int InsertTopic(int Top_Id, string Top_Name, int Crs_Id)
     {
         string s = "Insert_Topic";
-        SqlParameter[] p = new SqlParameter[] { new SqlParameter("@Top_Id",Top_Id ),
-            new SqlParameter("@Top_Name",Top_Name ) ,
+        SqlParameter[] p = new SqlParameter[] { new SqlParameter("@Top_Name",Top_Name ) ,
             new SqlParameter("@Crs_Id", Crs_Id) ,
         };
         return DataAccessLayer.DMLCommandSP(s,p);
