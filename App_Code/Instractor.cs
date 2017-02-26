@@ -8,13 +8,15 @@ using System.Data.SqlTypes;
 /// <summary>
 /// Summary description for Instractor
 /// </summary>
-public static class Instractor
+public static class InstructorLayer
 {
     public static DataSet SelectAllStudents()
     {
         string s = "select * from Instructor";
         return DataAccessLayer.SelectCommand(s);
+
     }
+    public static 
 
 
 

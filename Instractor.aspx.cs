@@ -11,4 +11,9 @@ public partial class Instractor : System.Web.UI.Page
     {
 
     }
+
+    protected void RequiredFieldValidator1_Disposed(object sender, EventArgs e)
+    {
+
+    }
 }
