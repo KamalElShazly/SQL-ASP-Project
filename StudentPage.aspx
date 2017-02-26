@@ -67,8 +67,8 @@
                                 <asp:Label ID="Label5" runat="server" Text='<%# Bind("dept_name") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:CommandField ShowEditButton="True" ValidationGroup="update" />
-                        <asp:CommandField ShowDeleteButton="True" />
+                        <asp:CommandField ShowEditButton="True" ValidationGroup="update" HeaderText="Update" />
+                        <asp:CommandField ShowDeleteButton="True" HeaderText="Delete" />
                     </Columns>
                     <EditRowStyle BackColor="#999999" />
                     <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
