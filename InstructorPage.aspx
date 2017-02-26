@@ -8,9 +8,14 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" Height="159px" Width="543px" DataKeyNames="ins_id">
+        <br />
+        <table style="width:100%;">
+            <tr>
+                <td colspan="3">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" Height="159px" Width="543px" CellPadding="4" DataKeyNames="ins_id" ForeColor="#333333" GridLines="None">
+            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
-                <asp:TemplateField HeaderText="Instractor_id">
+                <asp:TemplateField HeaderText="ID">
                     <EditItemTemplate>
                         <asp:Label ID="insidlbledit" runat="server" Text='<%# Bind("Ins_Id") %>'></asp:Label>
                     </EditItemTemplate>
@@ -18,26 +23,25 @@
                         <asp:Label ID="insidlbldes" runat="server" Text='<%# Bind("Ins_Id") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Ins_Name">
+                <asp:TemplateField HeaderText="Name">
                     <EditItemTemplate>
                         <asp:TextBox ID="tex_insname" runat="server" Text='<%# Bind("Ins_Name") %>'></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tex_insname" ErrorMessage="*" OnDisposed="RequiredFieldValidator1_Disposed"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="Name_Validator" runat="server" ControlToValidate="tex_insname" ErrorMessage="Name Is Required" ForeColor="Red" ToolTip="Name Is Required">*</asp:RequiredFieldValidator>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="insnamelbl" runat="server" Text='<%# Bind("Ins_Name") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Ins_Age">
+                <asp:TemplateField HeaderText="Age">
                     <EditItemTemplate>
                         <asp:TextBox ID="insage_tex" runat="server" Text='<%# Bind("Ins_Age") %>'></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="insage_tex" ErrorMessage="*"></asp:RequiredFieldValidator>
-                        <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="insage_tex" ErrorMessage="Enter Number" MaximumValue="150" MinimumValue="1" Type="Integer"></asp:RangeValidator>
+                        <asp:RangeValidator ID="AgeRange" runat="server" ControlToValidate="insage_tex" ErrorMessage="Age Between 20 - 60" MaximumValue="60" MinimumValue="20" Type="Integer" ForeColor="Red" ToolTip="Age Between 20 - 60">Age Between 20 - 60</asp:RangeValidator>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="insagelbl" runat="server" Text='<%# Bind("Ins_Age") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Ins_Adress">
+                <asp:TemplateField HeaderText="Address">
                     <EditItemTemplate>
                         <asp:TextBox ID="ins_addrestex" runat="server" Text='<%# Bind("Ins_Address") %>'></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="ins_addrestex" ErrorMessage="*"></asp:RequiredFieldValidator>
@@ -46,31 +50,39 @@
                         <asp:Label ID="insaddress_lbl" runat="server" Text='<%# Bind("Ins_Address") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Dept_Id">
+                <asp:TemplateField HeaderText="Department">
                     <EditItemTemplate>
-                        <asp:DropDownList ID="deptid_drop" runat="server" DataSourceID="DS_Department" DataTextField="Dept_Name" DataValueField="Dept_Id" SelectedValue='<%# Bind("Dept_Id") %>'>
+                        <asp:DropDownList ID="deptid_drop" runat="server" DataSourceID="ObjectDataSource2" DataTextField="Dept_Name" DataValueField="Dept_Id" SelectedValue='<%# Bind("Dept_Id") %>'>
                         </asp:DropDownList>
-                        <asp:ObjectDataSource ID="DS_Department" runat="server" SelectMethod="SelectDepartmentIdAndName" TypeName="DepartmentLayer"></asp:ObjectDataSource>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="deptid_lbl" runat="server" Text='<%# Bind("Dept_Name") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Ins_Sal">
+                <asp:TemplateField HeaderText="Salary">
                     <EditItemTemplate>
                         <asp:TextBox ID="inssaltex" runat="server" Text='<%# Bind("Ins_Salary") %>'></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="inssaltex" ErrorMessage="*"></asp:RequiredFieldValidator>
-                        <asp:RangeValidator ID="RangeValidator2" runat="server" ControlToValidate="inssaltex" ErrorMessage="enter number" MaximumValue="10000000" MinimumValue="0" Type="Integer"></asp:RangeValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="inssaltex" ErrorMessage="Salary is Number Only" ForeColor="Red" ToolTip="Salary is Number Only" ValidationExpression="\d">Salary is Number Only</asp:RegularExpressionValidator>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="inssal_lbl" runat="server" Text='<%# Bind("Ins_Salary") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:CommandField ShowEditButton="True" />
-                <asp:CommandField ShowDeleteButton="True" />
+                <asp:CommandField ShowEditButton="True" HeaderText="Edit" />
+                <asp:CommandField ShowDeleteButton="True" HeaderText="Delete" />
             </Columns>
+            <EditRowStyle BackColor="#999999" />
+            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#E9E7E2" />
+            <SortedAscendingHeaderStyle BackColor="#506C8C" />
+            <SortedDescendingCellStyle BackColor="#FFFDF8" />
+            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
-        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="SelectAllInstructor" TypeName="InstructorLayer" DeleteMethod="DeleteInstructor" InsertMethod="InsertInstructor" UpdateMethod="UpdateInstructor">
+        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="SelectAllInstructor" TypeName="InstructorLayer" DeleteMethod="DeleteInstructor" InsertMethod="InsertInstructor">
             <DeleteParameters>
                 <asp:Parameter Name="Ins_Id" Type="Int32" />
             </DeleteParameters>
@@ -79,32 +91,54 @@
                 <asp:Parameter Name="Ins_Age" Type="Int32" />
                 <asp:Parameter Name="Ins_Address" Type="String" />
                 <asp:Parameter Name="Dept_Id" Type="Int32" />
-                <asp:Parameter Name="Ins_Salary" Type="Int32" />
+                <asp:Parameter Name="Ins_Salary" Type="String" />
             </InsertParameters>
-            <UpdateParameters>
-                <asp:Parameter Name="Ins_Name" Type="String" />
-                <asp:Parameter Name="Ins_Age" Type="Int32" />
-                <asp:Parameter Name="Ins_Address" Type="String" />
-                <asp:Parameter Name="Dept_Id" Type="Int32" />
-                <asp:Parameter Name="Ins_Salary" Type="Int32" />
-            </UpdateParameters>
-        </asp:ObjectDataSource>
-        name<asp:TextBox ID="tex_name" runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="tex_name" ErrorMessage="*"></asp:RequiredFieldValidator>
-        <br />
-        age<asp:TextBox ID="tex_age" runat="server"></asp:TextBox>
-        <asp:RangeValidator ID="RangeValidator3" runat="server" ControlToValidate="tex_age" ErrorMessage="enter number" MaximumValue="150" MinimumValue="0" Type="Integer"></asp:RangeValidator>
-        <br />
-        adress<asp:TextBox ID="tex_adress" runat="server" OnTextChanged="tex_adress_TextChanged"></asp:TextBox>
-        <br />
-        sal<asp:TextBox ID="tex_sal" runat="server"></asp:TextBox>
-        <asp:RangeValidator ID="RangeValidator4" runat="server" ControlToValidate="tex_sal" ErrorMessage="enter number" MaximumValue="1000000" MinimumValue="0" Type="Integer"></asp:RangeValidator>
-        <br />
-        dept<asp:DropDownList ID="Drop_depart" runat="server" DataSourceID="ObjectDataSource2" DataTextField="Dept_Name" DataValueField="Dept_Id">
+                    </asp:ObjectDataSource>
+                    <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="SelectDepartmentIdAndName" TypeName="DepartmentLayer"></asp:ObjectDataSource>
+                </td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><asp:TextBox ID="tex_name" runat="server" Width="200px"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="Name_Validator0" runat="server" ControlToValidate="tex_name" ErrorMessage="Name Is Required" ForeColor="Red" ToolTip="Name Is Required" ValidationGroup="v">*</asp:RequiredFieldValidator>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td><asp:TextBox ID="tex_age" runat="server" Width="200px"></asp:TextBox>
+                    <asp:RangeValidator ID="AgeRange0" runat="server" ControlToValidate="tex_age" ErrorMessage="Age Between 20 - 60" ForeColor="Red" MaximumValue="60" MinimumValue="20" ToolTip="Age Between 20 - 60" Type="Integer" ValidationGroup="v">Age Between 20 - 60</asp:RangeValidator>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Adress</td>
+                <td><asp:TextBox ID="tex_adress" runat="server" Width="200px"></asp:TextBox>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Salary</td>
+                <td><asp:TextBox ID="tex_sal" runat="server" Width="200px"></asp:TextBox>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Salary is Number Only" ForeColor="Red" ToolTip="Salary is Number Only" ValidationExpression="\d*.\d*" ControlToValidate="tex_sal">Salary is Number Only</asp:RegularExpressionValidator>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Department</td>
+                <td><asp:DropDownList ID="Drop_depart" runat="server" DataSourceID="ObjectDataSource2" DataTextField="Dept_Name" DataValueField="Dept_Id" Width="200px">
         </asp:DropDownList>
-        <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="SelectDepartmentIdAndName" TypeName="DepartmentLayer"></asp:ObjectDataSource>
-        <br />
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Insert" ValidationGroup="v" Width="100px" />
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
     </form>
 </body>
 </html>
