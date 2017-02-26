@@ -8,7 +8,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <table style="width:100%;">
+    <table style="width: 100%;">
         <tr>
             <td class="auto-style2">
                 <asp:DropDownList ID="DropDownList1" runat="server">
