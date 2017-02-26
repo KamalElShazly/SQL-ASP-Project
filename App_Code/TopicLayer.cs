@@ -13,7 +13,9 @@ public class TopicLayer
 {
     public static DataSet SelectAllTopics()
     {
-        string s = "Select * from Topic";
+        string s = @"SELECT Topic.*,Course.Crs_Name
+                    FROM Topic
+                    JOIN Course ON Topic.Crs_Id = Course.Crs_Id";
         return DataAccessLayer.SelectCommand(s);
     }
     public static DataSet SelectTopicByCrsId(int Crs_Id)
