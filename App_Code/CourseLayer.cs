@@ -16,6 +16,11 @@ public static class CourseLayer
         string s = "Select * from Course";
         return DataAccessLayer.SelectCommand(s);
     }
+    public static DataSet SelectCourse_Id_Name()
+    {
+        string s = "Select Crs_Id,Crs_Name from Course";
+        return DataAccessLayer.SelectCommand(s);
+    }
 
     public static int InsertCourse(string Crs_Name, int? Crs_Duration)
     {
