@@ -16,10 +16,8 @@ public partial class DepartmentPage : System.Web.UI.Page
     {
         if (IsValid)
         {
-            DepartmentSource.InsertParameters["St_Name"].DefaultValue = NameTxt.Text;
-            DepartmentSource.InsertParameters["St_Age"].DefaultValue = AgeTxt.Text;
-            DepartmentSource.InsertParameters["St_Address"].DefaultValue = AddressTxt.Text;
-            DepartmentSource.InsertParameters["Dept_Id"].DefaultValue = DepartmentList.SelectedValue;
+            DepartmentSource.InsertParameters["Dept_Name"].DefaultValue = NameTxt.Text;
+            DepartmentSource.InsertParameters["Mgr_Id"].DefaultValue = ManagerList.SelectedValue;
             DepartmentSource.Insert();
         }
     }
