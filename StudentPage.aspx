@@ -35,6 +35,7 @@
                         <asp:TemplateField HeaderText="Name">
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("st_name") %>'></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="Name_Validator" runat="server" ControlToValidate="TextBox1" ErrorMessage="Name Is Required" ForeColor="Red" ToolTip="Name Is Required" ValidationGroup="update">*</asp:RequiredFieldValidator>
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("st_name") %>'></asp:Label>
@@ -66,8 +67,8 @@
                                 <asp:Label ID="Label5" runat="server" Text='<%# Bind("dept_name") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:CommandField ShowEditButton="True" ValidationGroup="update" />
-                        <asp:CommandField ShowDeleteButton="True" />
+                        <asp:CommandField ShowEditButton="True" ValidationGroup="update" HeaderText="Update" />
+                        <asp:CommandField ShowDeleteButton="True" HeaderText="Delete" />
                     </Columns>
                     <EditRowStyle BackColor="#999999" />
                     <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -80,7 +81,7 @@
                     <SortedDescendingCellStyle BackColor="#FFFDF8" />
                     <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                 </asp:GridView>
-                <asp:ObjectDataSource ID="DepartmentSource" runat="server" SelectMethod="SelectAllDepartments" TypeName="DepartmentLayer"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="DepartmentSource" runat="server" SelectMethod="SelectDepartmentIdAndName" TypeName="DepartmentLayer"></asp:ObjectDataSource>
                 <asp:ObjectDataSource ID="StudentSource" runat="server" DeleteMethod="DeleteStudent" InsertMethod="InsertStudent" SelectMethod="SelectAllStudents" TypeName="StudentLayer" UpdateMethod="UpdateStudent">
                     <DeleteParameters>
                         <asp:Parameter Name="St_Id" Type="Int32" />

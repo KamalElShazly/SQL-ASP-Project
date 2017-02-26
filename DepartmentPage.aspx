@@ -21,7 +21,7 @@
     <table style="width:100%;">
         <tr>
             <td class="auto-style7" colspan="2">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="st_id" DataSourceID="StudentSource" ForeColor="#333333" GridLines="None">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="dept_id" DataSourceID="DepartmentSource" ForeColor="#333333" GridLines="None">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <Columns>
                         <asp:TemplateField HeaderText="ID">
@@ -42,11 +42,12 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Manager">
                             <EditItemTemplate>
-                                <asp:DropDownList ID="DropDownList1" runat="server">
+                                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="InstructorSource" DataTextField="Ins_Name" DataValueField="Ins_Id" SelectedValue='<%# Bind("Mgr_Id") %>' AppendDataBoundItems="True">
+                                    <asp:ListItem Value=""></asp:ListItem>
                                 </asp:DropDownList>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("st_age") %>'></asp:Label>
+                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("Ins_Name") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:CommandField ShowEditButton="True" ValidationGroup="update" />
@@ -63,23 +64,19 @@
                     <SortedDescendingCellStyle BackColor="#FFFDF8" />
                     <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                 </asp:GridView>
-                <asp:ObjectDataSource ID="InstructorSource" runat="server" SelectMethod="SelectAllDepartments" TypeName="DepartmentLayer"></asp:ObjectDataSource>
-                <asp:ObjectDataSource ID="DepartmentSource" runat="server" DeleteMethod="DeleteStudent" InsertMethod="InsertStudent" SelectMethod="SelectAllStudents" TypeName="StudentLayer" UpdateMethod="UpdateStudent">
+                <asp:ObjectDataSource ID="InstructorSource" runat="server" SelectMethod="SelectInstructorIdAndName" TypeName="InstructorLayer"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="DepartmentSource" runat="server" DeleteMethod="DeleteDepartment" InsertMethod="InsertDepartment" SelectMethod="SelectAllDepartments" TypeName="DepartmentLayer" UpdateMethod="UpdateDepartment">
                     <DeleteParameters>
-                        <asp:Parameter Name="St_Id" Type="Int32" />
+                        <asp:Parameter Name="Dept_Id" Type="Int32" />
                     </DeleteParameters>
                     <InsertParameters>
-                        <asp:Parameter Name="St_Name" Type="String" />
-                        <asp:Parameter Name="St_Age" Type="Int32" />
-                        <asp:Parameter Name="St_Address" Type="String" />
-                        <asp:Parameter Name="Dept_Id" Type="Int32" />
+                        <asp:Parameter Name="Dept_Name" Type="String" />
+                        <asp:Parameter Name="Mgr_Id" Type="Int32" />
                     </InsertParameters>
                     <UpdateParameters>
-                        <asp:Parameter Name="St_Id" Type="Int32" />
-                        <asp:Parameter Name="St_Name" Type="String" />
-                        <asp:Parameter Name="St_Age" Type="Int32" />
-                        <asp:Parameter Name="St_Address" Type="String" />
                         <asp:Parameter Name="Dept_Id" Type="Int32" />
+                        <asp:Parameter Name="Dept_Name" Type="String" />
+                        <asp:Parameter Name="Mgr_Id" Type="Int32" />
                     </UpdateParameters>
                 </asp:ObjectDataSource>
             </td>
@@ -92,22 +89,10 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style9">Age</td>
+            <td class="auto-style9">Manager</td>
             <td>
-                <asp:TextBox ID="AgeTxt" runat="server" Width="200px"></asp:TextBox>
-                <asp:RangeValidator ID="AgeRange" runat="server" ControlToValidate="AgeTxt" ErrorMessage="Age Between 20 - 40" ForeColor="Red" MaximumValue="40" MinimumValue="20" ToolTip="Age Between 20-40" Type="Integer" ValidationGroup="insert">Age Between 20-40</asp:RangeValidator>
-            </td>
-        </tr>
-        <tr>
-            <td class="auto-style9">Address</td>
-            <td>
-                <asp:TextBox ID="AddressTxt" runat="server" Width="200px"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td class="auto-style9">Department</td>
-            <td>
-                <asp:DropDownList ID="DepartmentList" runat="server" DataSourceID="DepartmentSource" DataTextField="dept_name" DataValueField="dept_id" Width="200px">
+                <asp:DropDownList ID="ManagerList" runat="server" AppendDataBoundItems="True" DataSourceID="InstructorSource" DataTextField="Ins_Name" DataValueField="Ins_Id" Width="200px">
+                    <asp:ListItem Value=""></asp:ListItem>
                 </asp:DropDownList>
             </td>
         </tr>
@@ -117,6 +102,6 @@
                 <asp:Button ID="InsertBtn" runat="server" OnClick="InsertBtn_Click" Text="Insert" ValidationGroup="insert" Width="100px" />
             </td>
         </tr>
-    </table>
+        </table>
 </asp:Content>
 

@@ -20,7 +20,7 @@ public static class StudentLayer
     }
     public static DataSet SelectStudentsWithoutDept()
     {
-        string s = @"Select * From Department";
+        string s = @"Select * From Student";
         return DataAccessLayer.SelectCommand(s);
     }
     public static int InsertStudent(string St_Name, int? St_Age, string St_Address,int? Dept_Id)
