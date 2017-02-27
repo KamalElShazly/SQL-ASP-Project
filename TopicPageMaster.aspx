@@ -18,7 +18,7 @@
     <table style="width: 100%;">
         <tr>
             <td colspan="2">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Top_Id" DataSourceID="TopicSource" ForeColor="#333333" GridLines="None">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Top_Id" DataSourceID="TopicSource" ForeColor="#333333" GridLines="None" AllowPaging="True">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <Columns>
                         <asp:TemplateField HeaderText="ID">

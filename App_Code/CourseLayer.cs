@@ -20,7 +20,7 @@ public static class CourseLayer
     {
         string s = @"SELECT Course.*
                     FROM Course
-                    JOIN St_Ins_Crs ON Course.Crs_Id = St_Ins_Crs.Crs_Id and St_Id=" + St_Id.ToString();
+                    JOIN St_Ins_Crs ON Course.Crs_Id = St_Ins_Crs.Crs_Id and St_Ins_Crs.Crs_Id is not null and St_Id=" + St_Id.ToString();
         return DataAccessLayer.SelectCommand(s);
     }
     public static DataSet SelectCourse_Id_Name()
