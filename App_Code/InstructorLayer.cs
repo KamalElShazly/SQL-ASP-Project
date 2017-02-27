@@ -31,7 +31,7 @@ public static class InstructorLayer
             new SqlParameter("@Ins_Age", Ins_Age??SqlInt32.Null),
             new SqlParameter("@Ins_Address", Ins_Address??SqlString.Null) ,
             new SqlParameter("@Dept_Id", Dept_Id) ,
-            new SqlParameter("@Ins_Salary", Ins_Salary)
+            new SqlParameter("@Ins_Salary", Ins_Salary??SqlString.Null)
         };
         return DataAccessLayer.DMLCommandSP(s, p);
     }
@@ -54,5 +54,20 @@ public static class InstructorLayer
         SqlParameter[] p = new SqlParameter[] { new SqlParameter("@Ins_Id", Ins_Id) };
         return DataAccessLayer.DMLCommandSP(s, p);
     }
+
+    public static DataSet SelectInsructorById(int id)
+    {
+        string s = "SELECT * FROM Instructor where Ins_Id=" + id.ToString();
+        return DataAccessLayer.SelectCommand(s);
+    }
+
+
+    public static DataSet SelectInstructorSalary()
+    {
+        string s = "SELECT  Ins_Id,Ins_Name,Ins_Salary FROM Instructor";
+           return DataAccessLayer.SelectCommand(s);
+    }
+
+
 
 }
