@@ -1,15 +1,13 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage1.master" AutoEventWireup="true" CodeFile="SelectAllInstructorPage.aspx.cs" Inherits="SelectAllInstructorPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage1.master" AutoEventWireup="true" CodeFile="InstructorSalary.aspx.cs" Inherits="InstructorSalary" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
+
         .auto-style2 {
-            width: 109px;
+            width: 93px;
         }
         .auto-style3 {
-            width: 245px;
-        }
-        .auto-style6 {
-            height: 26px;
+            width: 231px;
         }
     </style>
 </asp:Content>
@@ -17,10 +15,10 @@
     <table style="width:100%;">
         <tr>
             <td colspan="3">
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="482px">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="418px">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <Columns>
-                        <asp:TemplateField HeaderText="ID">
+                        <asp:TemplateField HeaderText="ID ">
                             <ItemTemplate>
                                 <asp:Label ID="Label_Ins_Id" runat="server" Text='<%# Bind("Ins_Id") %>'></asp:Label>
                             </ItemTemplate>
@@ -28,21 +26,6 @@
                         <asp:TemplateField HeaderText="Name">
                             <ItemTemplate>
                                 <asp:Label ID="Label_Ins_Name" runat="server" Text='<%# Bind("Ins_Name") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Age">
-                            <ItemTemplate>
-                                <asp:Label ID="Label_Ins_Age" runat="server" Text='<%# Bind("Ins_Age") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Address">
-                            <ItemTemplate>
-                                <asp:Label ID="Label_Ins_Address" runat="server" Text='<%# Bind("Ins_Address") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Dept_Id">
-                            <ItemTemplate>
-                                <asp:Label ID="Label_Dept_Id" runat="server" Text='<%# Bind("Dept_Id") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Salary">
@@ -66,24 +49,26 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style6" colspan="3">&nbsp;</td>
-        </tr>
-        <tr>
-            <td class="auto-style2">Select By ID : </td>
+            <td class="auto-style2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ID&nbsp;&nbsp; :&nbsp;</td>
             <td class="auto-style3">
-                <asp:TextBox ID="TextBox_SelectById" runat="server" Width="200px" ValidationGroup="SelectById"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox_SelectById" Display="Dynamic" ErrorMessage="*" ValidationGroup="SelectById"></asp:RequiredFieldValidator>
+                <asp:TextBox ID="TextBox_SelectedId" runat="server" Width="200px"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox_SelectedId" Display="Dynamic" ErrorMessage="*" ForeColor="Red"></asp:RequiredFieldValidator>
             </td>
             <td>
-                <asp:Button ID="Button_Se" runat="server" Text="Select By ID " Width="100px" OnClick="Button_Se_Click" ValidationGroup="SelectById" />
+                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Select By ID" Width="100px" />
             </td>
         </tr>
         <tr>
             <td class="auto-style2">&nbsp;</td>
             <td class="auto-style3">&nbsp;</td>
             <td>
-                <asp:Button ID="Button_SelectAll" runat="server" Text="Select All" Width="100px" OnClick="Button_SelectAll_Click" />
+                <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Select All" Width="100px" />
             </td>
+        </tr>
+        <tr>
+            <td class="auto-style2">&nbsp;</td>
+            <td class="auto-style3">&nbsp;</td>
+            <td>&nbsp;</td>
         </tr>
     </table>
 </asp:Content>
