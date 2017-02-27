@@ -60,6 +60,13 @@ public static class InstructorLayer
         string s = "SELECT * FROM Instructor where Ins_Id=" + id.ToString();
         return DataAccessLayer.SelectCommand(s);
     }
+    public static DataSet SelectIns_SalaryById(int id)
+    {
+        string s = "SELECT Ins_Id,Ins_Name,Ins_Salary FROM Instructor where Ins_Id=" + id.ToString();
+        return DataAccessLayer.SelectCommand(s);
+    }
+
+
 
 
     public static DataSet SelectInstructorSalary()
