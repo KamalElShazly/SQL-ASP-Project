@@ -14,9 +14,33 @@
     <table style="width: 100%;">
         <tr>
             <td class="auto-style2">
-                Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:DropDownList ID="DropDownList_St_Name" runat="server" AutoPostBack="True" DataSourceID="ObjectDataSource_Student" DataTextField="St_Name" DataValueField="St_Id" OnSelectedIndexChanged="DropDownList_St_Name_SelectedIndexChanged" Width="200px">
-                </asp:DropDownList>
+                &nbsp;&nbsp;&nbsp;
+                <asp:GridView ID="GridView_student" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ObjectDataSource_Student" ForeColor="#333333" GridLines="None" AllowPaging="True" OnSelectedIndexChanging="GridView_student_SelectedIndexChanging">
+                    <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                    <Columns>
+                        <asp:TemplateField HeaderText="Student ID">
+                            <ItemTemplate>
+                                <asp:Label ID="Label_St_Id" runat="server" Text='<%# Bind("St_Id") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Student Name">
+                            <ItemTemplate>
+                                <asp:Label ID="Label_St_Name" runat="server" Text='<%# Bind("St_Name") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:CommandField ShowSelectButton="True" />
+                    </Columns>
+                    <EditRowStyle BackColor="#999999" />
+                    <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                    <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                    <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                    <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                    <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                    <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                    <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+                </asp:GridView>
                 <asp:ObjectDataSource ID="ObjectDataSource_Student" runat="server" SelectMethod="SelectStudentsIdAndName" TypeName="StudentLayer"></asp:ObjectDataSource>
             </td>
             <td>
