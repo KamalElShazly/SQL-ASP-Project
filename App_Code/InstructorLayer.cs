@@ -16,6 +16,15 @@ public static class InstructorLayer
         return DataAccessLayer.SelectCommand(s);
     }
 
+     
+
+    public static DataSet SelectInstructorByCourseID(int Crs_Id)
+    {
+          string s = @"select distinct i.Ins_Id,i.Ins_Name
+          from Instructor i,St_Ins_Crs ii
+          where i.Ins_Id=ii.Ins_Id and ii.Crs_Id="+ Crs_Id.ToString();
+         return DataAccessLayer.SelectCommand(s);
+    }
     public static DataSet SelectAllInstructor()
     {
         string s = @"SELECT Instructor.*,Department.Dept_Name
