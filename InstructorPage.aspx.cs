@@ -11,12 +11,6 @@ public partial class Instractor : System.Web.UI.Page
     {
 
     }
-
-    protected void RequiredFieldValidator1_Disposed(object sender, EventArgs e)
-    {
-
-    }
-
     protected void Button1_Click(object sender, EventArgs e)
     {
         if (IsValid)
@@ -29,10 +23,5 @@ public partial class Instractor : System.Web.UI.Page
 
             ObjectDataSource1.Insert();
         }
-    }
-
-    protected void tex_adress_TextChanged(object sender, EventArgs e)
-    {
-
     }
 }
