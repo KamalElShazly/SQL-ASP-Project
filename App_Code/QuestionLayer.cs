@@ -14,16 +14,21 @@ public static class QuestionLayer
     public static DataSet SelectAllQuestions()
     {
         string s = @"select q.*,c.crs_name,
-	                (select q_choice from Q_Answers qs
-	                where q.Q_Id=qs.Q_Id and Q_Answer='a') Answer1,
-	                (select q_choice from Q_Answers qs
-	                where q.Q_Id=qs.Q_Id and Q_Answer='b') Answer2,
-	                (select q_choice from Q_Answers qs
-	                where q.Q_Id=qs.Q_Id and Q_Answer='c') Answer3,
-	                (select q_choice from Q_Answers qs
-	                where q.Q_Id=qs.Q_Id and Q_Answer='d') Answer4
-                    from question q,course c
-                    where q.crs_id=c.crs_id";
+	        (select q_choice from Q_Answers qs where q.Q_Id=qs.Q_Id and Q_Answer='a') Answer1,
+	        (select q_choice from Q_Answers qs where q.Q_Id=qs.Q_Id and Q_Answer='b') Answer2,
+	        (select q_choice from Q_Answers qs where q.Q_Id=qs.Q_Id and Q_Answer='c') Answer3,
+	        (select q_choice from Q_Answers qs where q.Q_Id=qs.Q_Id and Q_Answer='d') Answer4
+            from question q,course c where q.crs_id=c.crs_id";
+        return DataAccessLayer.SelectCommand(s);
+    }
+    public static DataSet SelectQuestionsByCourse(int Crs_Id)
+    {
+        string s = @"select *,
+            (select q_choice from Q_Answers qs where q.Q_Id=qs.Q_Id and Q_Answer='a') Answer1,
+            (select q_choice from Q_Answers qs where q.Q_Id=qs.Q_Id and Q_Answer='b') Answer2,
+            (select q_choice from Q_Answers qs where q.Q_Id=qs.Q_Id and Q_Answer='c') Answer3,
+            (select q_choice from Q_Answers qs where q.Q_Id=qs.Q_Id and Q_Answer='d') Answer4
+            from question q where crs_id = " + Crs_Id.ToString();
         return DataAccessLayer.SelectCommand(s);
     }
     public static int InsertQuestion(string Q_Body, string Q_Type, int Q_Grade, string Q_Answer,
