@@ -26,8 +26,8 @@ public static class DepartmentLayer
     public static DataSet SelectDepartmentById(int Dept_Id)
     {
         string s = @"SELECT Department.Dept_Id,Department.Dept_Name,Instructor.Ins_Name
-                    FROM Instructor
-                    FULL JOIN Department ON Department.Mgr_Id =Instructor.Ins_Id and Department.Dept_Id=" + Dept_Id.ToString();
+                    FROM Department 
+                    FULL JOIN Instructor ON Department.Mgr_Id =Instructor.Ins_Id and Department.Dept_Id=" + Dept_Id.ToString();
         return DataAccessLayer.SelectCommand(s);
     }
     public static int InsertDepartment(string Dept_Name, int? Mgr_Id)
