@@ -23,11 +23,12 @@ public static class DepartmentLayer
         string s = @"SELECT Dept_Id,Dept_Name FROM Department";
         return DataAccessLayer.SelectCommand(s);
     }
-    public static DataSet SelectAllDepartmentsWithManagers()
+    public static DataSet SelectDepartmentById(int Dept_Id)
     {
         string s = @"SELECT Department.Dept_Id,Department.Dept_Name,Instructor.Ins_Name
-                    FROM Instructor
-                    JOIN Department ON Department.Mgr_Id =Instructor.Ins_Id ";
+                    FROM Department 
+                    FULL JOIN Instructor ON Department.Mgr_Id =Instructor.Ins_Id
+                    WHERE Department.Dept_Id=" + Dept_Id.ToString();
         return DataAccessLayer.SelectCommand(s);
     }
     public static int InsertDepartment(string Dept_Name, int? Mgr_Id)
