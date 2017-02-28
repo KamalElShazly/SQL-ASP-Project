@@ -11,6 +11,17 @@
         .auto-style6 {
             height: 26px;
         }
+        .auto-style7 {
+            width: 109px;
+            height: 30px;
+        }
+        .auto-style8 {
+            width: 245px;
+            height: 30px;
+        }
+        .auto-style9 {
+            height: 30px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -66,15 +77,15 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style6" colspan="3">&nbsp;</td>
+            <td class="auto-style6" colspan="3"></td>
         </tr>
         <tr>
-            <td class="auto-style2">Select By ID : </td>
-            <td class="auto-style3">
+            <td class="auto-style7">Select By ID : </td>
+            <td class="auto-style8">
                 <asp:TextBox ID="TextBox_SelectById" runat="server" Width="200px" ValidationGroup="SelectById"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox_SelectById" Display="Dynamic" ErrorMessage="*" ValidationGroup="SelectById"></asp:RequiredFieldValidator>
             </td>
-            <td>
+            <td class="auto-style9">
                 <asp:Button ID="Button_Se" runat="server" Text="Select By ID " Width="100px" OnClick="Button_Se_Click" ValidationGroup="SelectById" />
             </td>
         </tr>
