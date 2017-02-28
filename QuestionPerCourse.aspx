@@ -15,7 +15,7 @@
         <tr>
             <td>&nbsp;</td>
             <td>
-                <asp:GridView ID="GridView5" runat="server" AutoGenerateColumns="False" DataKeyNames="Crs_Id" DataSourceID="Course_DS" CellPadding="4" ForeColor="#333333" GridLines="None">
+                <asp:GridView ID="GridView5" runat="server" AutoGenerateColumns="False" DataKeyNames="Crs_Id" DataSourceID="Course_DS" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanging="GridView5_SelectedIndexChanging">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <Columns>
                         <asp:TemplateField HeaderText="Course-Id">
@@ -42,7 +42,7 @@
                     <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                 </asp:GridView>
                 <asp:ObjectDataSource ID="Course_DS" runat="server" SelectMethod="SelectCourse_Id_Name" TypeName="CourseLayer"></asp:ObjectDataSource>
-    <asp:ObjectDataSource ID="QuestionSource" runat="server" SelectMethod="SelectAllQuestions" TypeName="QuestionLayer" DeleteMethod="DeleteQuestion" InsertMethod="InsertQuestion" UpdateMethod="UpdateQuestion">
+    <asp:ObjectDataSource ID="QuestionSource" runat="server" SelectMethod="SelectQuestionsByCourse" TypeName="QuestionLayer" DeleteMethod="DeleteQuestion" InsertMethod="InsertQuestion" UpdateMethod="UpdateQuestion">
         <DeleteParameters>
             <asp:Parameter Name="Q_Id" Type="Int32" />
         </DeleteParameters>
@@ -57,6 +57,9 @@
                     <asp:Parameter Name="Q_Choice3" Type="String" />
                     <asp:Parameter Name="Q_Choice4" Type="String" />
         </InsertParameters>
+        <SelectParameters>
+            <asp:Parameter Name="Crs_Id" Type="Int32" />
+        </SelectParameters>
         <UpdateParameters>
             <asp:Parameter Name="Q_Id" Type="Int32" />
             <asp:Parameter Name="Q_Body" Type="String" />
@@ -126,16 +129,6 @@
                     <asp:Label ID="Label13" runat="server" Text='<%# Bind("Q_Answer") %>'></asp:Label>
                 </ItemTemplate>
                 <ControlStyle Width="10px" />
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Course">
-                <EditItemTemplate>
-                    <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="CourseSource" DataTextField="crs_name" DataValueField="crs_id" SelectedValue='<%# Bind("crs_id") %>'>
-                    </asp:DropDownList>
-                </EditItemTemplate>
-                <ItemTemplate>
-                    <asp:Label ID="Label5" runat="server" Text='<%# Bind("crs_name") %>'></asp:Label>
-                </ItemTemplate>
-                <ControlStyle Width="70px" />
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Choice A">
                 <EditItemTemplate>

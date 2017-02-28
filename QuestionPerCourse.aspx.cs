@@ -21,4 +21,9 @@ public partial class QuestionPerCourse : System.Web.UI.Page
         QuestionSource.SelectParameters["Crs_Id"].DefaultValue = ((Label)GridView5.Rows[e.NewSelectedIndex].Cells[0].FindControl("cou_idlbl")).Text;
         QuestionSource.Select();
     }
+
+    protected void GridView5_SelectedIndexChanging1(object sender, GridViewSelectEventArgs e)
+    {
+
+    }
 }
