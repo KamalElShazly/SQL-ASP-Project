@@ -23,6 +23,14 @@ public static class CourseLayer
                      join St_Ins_Crs SC on C.Crs_Id=SC.Crs_Id and SC.St_Id=" + st_id.ToString();
         return DataAccessLayer.SelectCommand(s);
     }
+    public static DataSet Course_Avg_GRADE()
+    {
+        string s = @"select C.Crs_Id ID,Crs_Name Name,avg(St_Grade) as Average_Grade
+                     from Course C,St_Ins_Crs S
+                     where C.Crs_Id=S.Crs_Id
+                     group by C.Crs_Id,C.Crs_Name";
+        return DataAccessLayer.SelectCommand(s);
+    }
     public static DataSet SelectCoursesPerStudent(int St_Id)
     {
         string s = @"SELECT Course.*
