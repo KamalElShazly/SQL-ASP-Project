@@ -30,6 +30,13 @@ public static class StudentLayer
                      WHERE exists(SELECT St_Id FROM St_Ins_Crs WHERE St_Ins_Crs.St_Id=Student.St_Id)";
         return DataAccessLayer.SelectCommand(s);
     }
+    public static DataSet SelectStudentResult()
+    {
+        string s = @"SELECT s.St_Id,s.St_Name,c.Crs_Name,cs.St_Grade
+                     FROM Student s,Course c,St_Ins_Crs cs
+                     WHERE s.St_Id = cs.St_Id and c.Crs_Id = cs.Crs_Id";
+        return DataAccessLayer.SelectCommand(s);
+    }
     public static int InsertStudent(string St_Name, int? St_Age, string St_Address,int? Dept_Id)
     {
         string s = "Insert_Student";

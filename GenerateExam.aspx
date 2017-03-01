@@ -5,9 +5,46 @@
         .auto-style2 {
             width: 132px;
         }
+        .auto-style5 {
+            width: 146px;
+        }
+        .auto-style6 {
+            width: 135px;
+        }
+        .auto-style7 {
+            width: 113px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+            <table aria-orientation="horizontal" style="width:100%; text-align:center;">
+                <tr>
+                    <td class="auto-style2">Course</td>
+                    <td class="auto-style6">MCQ Questions</td>
+                    <td class="auto-style5">T/F Questions</td>
+                    <td class="auto-style7">Duration</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style2">
+                        <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="CourseSource" DataTextField="crs_name" DataValueField="crs_id" Width="150px">
+                        </asp:DropDownList>
+                    </td>
+                    <td class="auto-style6">
+                        <asp:TextBox ID="TextBox1" runat="server" Width="100px"></asp:TextBox>
+                    </td>
+                    <td class="auto-style5">
+                        <asp:TextBox ID="TextBox2" runat="server" Width="100px"></asp:TextBox>
+                    </td>
+                    <td class="auto-style7">
+                        <asp:TextBox ID="TextBox3" runat="server" Width="100px"></asp:TextBox>
+                    </td>
+                    <td>
+                        <asp:Button ID="GenerateBtn" runat="server" Text="Generate Exam" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
     <asp:Repeater ID="Repeater1" runat="server" DataSourceID="ExamSource">
         <ItemTemplate>
             <tr>
@@ -15,7 +52,7 @@
                     Question
                 </td>
                 <td>
-                    <%# Eval("Q_Body") %>
+                    <%# Eval("Q_Id") %>
                 </td>
             </tr>
             <tr>
@@ -23,43 +60,16 @@
                     Answers
                 </td>
                 <td>
-                    <%# Eval("Answer1") %>
-                </td>
-                <td>
-                    <%# Eval("Answer2") %>
-                </td>
-                <td>
-                    <%# Eval("Answer3") %>
-                </td>
-                <td>
-                    <%# Eval("Answer4") %>
+                    <%# Eval("Q_Choice") %>
                 </td>
             </tr>
         </ItemTemplate>
     </asp:Repeater>
-    <asp:ObjectDataSource ID="ExamSource" runat="server" SelectMethod="SelectAllQuestions" TypeName="QuestionLayer"></asp:ObjectDataSource>
-    <table style="width:100%;">
-        <tr>
-            <td class="auto-style2">Course</td>
-            <td>MCQ</td>
-            <td>T/F</td>
-            <td>Duration</td>
-        </tr>
-        <tr>
-            <td class="auto-style2">
-                <asp:DropDownList ID="DropDownList1" runat="server">
-                </asp:DropDownList>
-            </td>
-            <td>
-                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-            </td>
-            <td>
-                <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
-            </td>
-        </tr>
+    <asp:ObjectDataSource ID="ExamSource" runat="server" SelectMethod="SelectQuestionsInExam" TypeName="ExamLayer"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="CourseSource" runat="server" SelectMethod="SelectCourse_Id_Name" TypeName="CourseLayer"></asp:ObjectDataSource>
+                    </td>
+                </tr>
     </table>
+    <br />
     </asp:Content>
 
