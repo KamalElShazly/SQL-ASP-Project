@@ -21,4 +21,23 @@ public static class ExamLayer
         string s = @"select * from q_answers where q_id=1";
         return DataAccessLayer.SelectCommand(s);
     }
+    public static DataSet SelectExamDate()
+
+    {
+        string s = @"Select distinct Ex_Date From St_Ex_Q";
+
+        return DataAccessLayer.SelectCommand(s);
+
+    }
+
+    public static DataSet StudentExam(string Ex_Date)
+
+    {
+        string s = @"Select St_Ex_Q.St_Id,St_Name,Ex_Id
+                     From St_Ex_Q,Student
+                     Where St_Ex_Q.St_Id=Student.St_Id and Ex_Date=" + Ex_Date;
+
+        return DataAccessLayer.SelectCommand(s);
+
+    }
 }
