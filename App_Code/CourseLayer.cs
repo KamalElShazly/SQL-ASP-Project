@@ -41,7 +41,8 @@ public static class CourseLayer
         string s = @"select distinct St_Ex_Q.St_Id ID,St_Name Name
                      from St_Ex_Q ,Exam ,St_Ins_Crs ,Student
                      where St_Ex_Q.St_Id=St_Ins_Crs.St_Id and St_Ex_Q.Ex_Id=Exam.Ex_Id 
-                     and Exam.Crs_Id=St_Ins_Crs.Crs_Id and St_Grade<Ex_Grade/2 and St_Ins_Crs.Crs_Id=" + Crs_Id;
+                     and Exam.Crs_Id=St_Ins_Crs.Crs_Id and St_Grade<Ex_Grade/2 and Student.St_Id=St_Ins_Crs.St_Id
+                     and St_Ins_Crs.Crs_Id=" + Crs_Id;
         return DataAccessLayer.SelectCommand(s);
     }
     public static DataSet SelectCoursesPerStudent(int St_Id)
