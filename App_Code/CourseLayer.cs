@@ -16,6 +16,13 @@ public static class CourseLayer
         string s = "Select * from Course";
         return DataAccessLayer.SelectCommand(s);
     }
+    public static DataSet St_Results(int st_id)
+    {
+        string s = @"select C.Crs_Id,C.Crs_Name,SC.St_Grade
+                     from Course C
+                     join St_Ins_Crs SC on C.Crs_Id=SC.Crs_Id and SC.St_Id=" + st_id.ToString();
+        return DataAccessLayer.SelectCommand(s);
+    }
     public static DataSet SelectCoursesPerStudent(int St_Id)
     {
         string s = @"SELECT Course.*
