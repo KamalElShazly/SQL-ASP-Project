@@ -15,13 +15,13 @@ public partial class GenerateExam : System.Web.UI.Page
     protected void GenerateBtn_Click(object sender, EventArgs e)
     {
         DataView Questions = (DataView)ExamSource.Select();
-        foreach(DataRowView Question in Questions)
+        foreach (DataRowView Question in Questions)
         {
             TableRow tRow = new TableRow();
-            foreach (string q in Question.Row.ItemArray)
+            foreach (var q in Question.Row.ItemArray)
             {
                 TableCell tCell = new TableCell();
-                tCell.Text = q;
+                tCell.Text = q == DBNull.Value ? string.Empty : q.ToString();
                 tRow.Cells.Add(tCell);
             }
             Table1.Rows.Add(tRow);

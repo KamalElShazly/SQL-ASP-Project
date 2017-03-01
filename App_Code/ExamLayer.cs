@@ -35,7 +35,7 @@ public static class ExamLayer
 
     public static DataSet StudentExam(string Ex_Date)
     {
-        string s = @"Select St_Ex_Q.St_Id,St_Name,Ex_Id
+        string s = @"Select distinct Ex_Id,St_Ex_Q.St_Id,St_Name
                      From St_Ex_Q,Student
                      Where St_Ex_Q.St_Id=Student.St_Id and Ex_Date='" + Ex_Date+"'";
         return DataAccessLayer.SelectCommand(s);
