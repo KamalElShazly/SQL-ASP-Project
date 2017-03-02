@@ -24,8 +24,19 @@ public static class ExamLayer
             (select q_choice from Q_Answers qs where q.Q_Id=qs.Q_Id and Q_Answer='c') Answer3,
             (select q_choice from Q_Answers qs where q.Q_Id=qs.Q_Id and Q_Answer='d') Answer4
             from Ex_Q eq, Question q
-            where Ex_Id = (select max(Ex_Id) from Exam) and eq.Q_Id=q.Q_Id";
+            where Ex_Id = (select max(Ex_Id) from Exam) and eq.Q_Id=q.Q_Id
+            order by q.Q_Type ";
         return DataAccessLayer.SelectCommand(s);
+    }
+    public static int GenerateExam(string Crs_Name, int MCQ_No, int TF_No, int? Ex_Dur)
+    {
+        string s = "Generate_Exam";
+        SqlParameter[] p = new SqlParameter[] { new SqlParameter("@Crs_Name", Crs_Name),
+            new SqlParameter("@MCQ_No", MCQ_No),
+            new SqlParameter("@TF_No", TF_No) ,
+            new SqlParameter("@Ex_Dur", Ex_Dur)
+        };
+        return DataAccessLayer.DMLCommandSP(s, p);
     }
     public static DataSet SelectExamDate()
     {

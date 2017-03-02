@@ -43,7 +43,7 @@ public static class StudentLayer
         SqlParameter[] p = new SqlParameter[] { new SqlParameter("@St_Name", St_Name),
             new SqlParameter("@St_Age", St_Age??SqlInt32.Null),
             new SqlParameter("@St_Address", St_Address??SqlString.Null) ,
-            new SqlParameter("@Dept_Id", Dept_Id??SqlInt32.Null) ,
+            new SqlParameter("@Dept_Id", Dept_Id??SqlInt32.Null)
         };
         return DataAccessLayer.DMLCommandSP(s, p);
     }
@@ -54,7 +54,7 @@ public static class StudentLayer
             new SqlParameter("@St_Name", St_Name),
             new SqlParameter("@St_Age", St_Age??SqlInt32.Null),
             new SqlParameter("@St_Address", St_Address??SqlString.Null) ,
-            new SqlParameter("@Dept_Id", Dept_Id??SqlInt32.Null) ,
+            new SqlParameter("@Dept_Id", Dept_Id??SqlInt32.Null)
         };
         return DataAccessLayer.DMLCommandSP(s, p);
     }
