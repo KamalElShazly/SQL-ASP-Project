@@ -65,14 +65,6 @@
         </tr>
         <tr>
             <td colspan="5">
-                <asp:ObjectDataSource ID="ExamSource" runat="server" SelectMethod="SelectQuestionsInExam" TypeName="ExamLayer" InsertMethod="GenerateExam">
-                    <InsertParameters>
-                        <asp:Parameter Name="Crs_Name" Type="String" />
-                        <asp:Parameter Name="MCQ_No" Type="Int32" />
-                        <asp:Parameter Name="TF_No" Type="Int32" />
-                        <asp:Parameter Name="Ex_Dur" Type="Int32" />
-                    </InsertParameters>
-                </asp:ObjectDataSource>
                 <asp:ObjectDataSource ID="CourseSource" runat="server" SelectMethod="SelectCourse_Id_Name" TypeName="CourseLayer"></asp:ObjectDataSource>
             </td>
         </tr>

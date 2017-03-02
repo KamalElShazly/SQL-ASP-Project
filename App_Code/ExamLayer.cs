@@ -28,7 +28,7 @@ public static class ExamLayer
             order by q.Q_Type ";
         return DataAccessLayer.SelectCommand(s);
     }
-    public static int GenerateExam(string Crs_Name, int MCQ_No, int TF_No, int? Ex_Dur)
+    public static int GenerateExam(string Crs_Name, int MCQ_No, int TF_No, int Ex_Dur)
     {
         string s = "Generate_Exam";
         SqlParameter[] p = new SqlParameter[] { new SqlParameter("@Crs_Name", Crs_Name),
