@@ -11,7 +11,8 @@ public partial class TopicUpdate : System.Web.UI.Page
     {
 
     }
-    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+
+    protected void DropDownList1_SelectedIndexChanged1(object sender, EventArgs e)
     {
         ObjectDataSource_Topic.SelectParameters["Crs_Id"].DefaultValue = DropDownList1.SelectedValue;
         ObjectDataSource_Topic.Select();

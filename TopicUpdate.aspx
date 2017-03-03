@@ -12,7 +12,7 @@
         <tr>
             <td class="auto-style2">Course</td>
             <td>
-                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="course" DataTextField="Crs_Name" DataValueField="Crs_Id" AutoPostBack="True">
+                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="course" DataTextField="Crs_Name" DataValueField="Crs_Id" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged1">
                 </asp:DropDownList>
                 <asp:ObjectDataSource ID="course" runat="server" SelectMethod="SelectCourse_Id_Name" TypeName="CourseLayer"></asp:ObjectDataSource>
             </td>
@@ -33,7 +33,7 @@
         <tr>
             <td class="auto-style2">&nbsp;</td>
             <td>
-                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ObjectDataSource_Topic" ForeColor="#333333" GridLines="None" AllowPaging="True">
+                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ObjectDataSource_Topic" ForeColor="#333333" GridLines="None" AllowPaging="True" DataKeyNames="Top_Id">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <Columns>
                         <asp:TemplateField HeaderText="Topic ID">
@@ -73,7 +73,9 @@
                     <UpdateParameters>
                         <asp:Parameter Name="Top_Id" Type="Int32" />
                         <asp:Parameter Name="Top_Name" Type="String" />
-                        <asp:Parameter Name="Crs_Id" Type="Int32" />
+
+                        <asp:ControlParameter ControlID="DropDownList1" Name="Crs_Id" PropertyName="SelectedValue" Type="Int32" />
+                    
                     </UpdateParameters>
                 </asp:ObjectDataSource>
             </td>
