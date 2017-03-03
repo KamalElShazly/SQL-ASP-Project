@@ -10,6 +10,55 @@ using System.Data.SqlTypes;
 /// </summary>
 public static class InstructorLayer
 {
+    public static DataSet SelectStudentsId(int St_Id)
+    {
+        string s = @"Select St_Id,St_Name From Student where St_Id=" + St_Id.ToString();
+        return DataAccessLayer.SelectCommand(s);
+    }
+    public static DataSet SelectStudentsIdAndDepartment(int St_Id)
+    {
+        string s = @"select i.*,ii.Dept_Name 
+from Student i , Department ii 
+where  i.Dept_Id=ii.Dept_Id AND i.St_Id= " + St_Id.ToString();
+        return DataAccessLayer.SelectCommand(s);
+    }
+    public static DataSet SelectStudentCourseAndInstructor(int St_Id)
+    {
+        string s = @"select ii.Crs_Name,iii.Ins_Name,i.St_Grade
+from St_Ins_Crs i , Course ii,Instructor iii
+where  ii.Crs_Id= i.Crs_Id and iii.Ins_Id=i.Ins_Id and i.St_Id="+ St_Id.ToString();
+        return DataAccessLayer.SelectCommand(s);
+    }
+
+    public static DataSet SelectStudentExamAndAnser(int St_Id,int Ex_Id)
+    {
+
+        string s = @" select q.*, s.St_Answer ,(select q_choice from Q_Answers qs where q.Q_Id = qs.Q_Id and Q_Answer = 'a') Answer1,
+	        (select q_choice from Q_Answers qs where q.Q_Id = qs.Q_Id and Q_Answer = 'b') Answer2,
+	        (select q_choice from Q_Answers qs where q.Q_Id = qs.Q_Id and Q_Answer = 'c') Answer3,
+	        (select q_choice from Q_Answers qs where q.Q_Id = qs.Q_Id and Q_Answer = 'd') Answer4
+     from question q, St_Ex_Q s
+      where s.Q_Id = q.Q_Id and s.St_Id =" + St_Id.ToString() + " and s.Ex_Id =" + Ex_Id.ToString();
+
+
+
+        return DataAccessLayer.SelectCommand(s);
+    }
+
+    public static DataSet SelectStudentExamss(int St_Id)
+    {
+        string s = @"select  distinct i.Ex_Id ,ii.*,iii.Crs_Name,iiii.St_Grade
+                   from St_Ex_Q i ,Exam ii,Course iii ,St_Ins_Crs iiii
+              where ii.Ex_Id=i.Ex_Id  and iii.Crs_Id=ii.Crs_Id and iiii.Crs_Id=ii.Crs_Id and i.St_Id=iiii.St_Id and i.St_Id="+ St_Id.ToString();
+        return DataAccessLayer.SelectCommand(s);
+    }
+    //public static DataSet SelectStudentExams(int St_Id)
+    //{
+    //    string s = @"select  distinct i.Ex_Id ,ii.*,iii.Crs_Name
+    //               from St_Ex_Q i ,Exam ii,Course iii
+    //          where ii.Ex_Id=i.Ex_Id  and iii.Crs_Id=ii.Crs_Id and i.St_Id=" + St_Id.ToString();
+    //    return DataAccessLayer.SelectCommand(s);
+    //}
     public static DataSet SelectInstructorIdAndName()
     {
         string s = @"SELECT Ins_Id,Ins_Name FROM Instructor";
