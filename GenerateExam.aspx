@@ -18,9 +18,7 @@
             width: 131px;
         }
     </style>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-
+    
     <script>
         function QuestionValidation(oSrc, args) {
             if ((parseInt(document.querySelector("#ContentPlaceHolder1_MCQNumber").value) + parseInt(document.querySelector("#ContentPlaceHolder1_TFNumber").value)) == 10)
@@ -29,7 +27,8 @@
                 args.IsValid = false;
         }
     </script>
-
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <table aria-orientation="horizontal" style="width: 100%; text-align: center;">
         <tr>
             <td class="auto-style2">Course</td>
@@ -52,7 +51,6 @@
                 <asp:TextBox ID="TFNumber" runat="server" Width="100px"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="TF_Required" runat="server" ControlToValidate="TFNumber" ErrorMessage="Required" ForeColor="Red" ToolTip="Required" ValidationGroup="generate" Display="Dynamic">*</asp:RequiredFieldValidator>
                 <asp:RangeValidator ID="TFRange" runat="server" ControlToValidate="TFNumber" ErrorMessage="Number Between 0-10" ForeColor="Red" MaximumValue="10" MinimumValue="0" ToolTip="Number Between 0-10" Type="Integer" ValidationGroup="generate" Display="Dynamic">Number Between 0-10</asp:RangeValidator>
-                <asp:CustomValidator ID="QuestionsValidator" runat="server" OnServerValidate="QuestionsValidation" ErrorMessage="Exam must have 10 questions" ForeColor="Red" ToolTip="Exam must have 10 questions" ClientValidationFunction="QuestionValidation" ValidationGroup="generate" Display="Dynamic">Exam must have 10 questions</asp:CustomValidator>
             </td>
             <td class="auto-style7">
                 <asp:TextBox ID="DurationTxt" runat="server" Width="100px"></asp:TextBox>
@@ -61,6 +59,7 @@
             </td>
             <td>
                 <asp:Button ID="GenerateBtn" runat="server" Text="Generate Exam" OnClick="GenerateBtn_Click" ValidationGroup="generate" />
+                <asp:CustomValidator ID="QuestionsValidator" runat="server" OnServerValidate="QuestionsValidation" ErrorMessage="Exam must have 10 questions" ForeColor="Red" ToolTip="Exam must have 10 questions" ClientValidationFunction="QuestionValidation" ValidationGroup="generate" Display="Dynamic">Exam must have 10 questions</asp:CustomValidator>
             </td>
         </tr>
         <tr>
