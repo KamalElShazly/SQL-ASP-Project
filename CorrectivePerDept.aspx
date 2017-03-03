@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage1.master" AutoEventWireup="true" CodeFile="CorrectivePerDept.aspx.cs" Inherits="CorrectivePerDept" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style type="text/css">
         .auto-style2 {
             width: 174px;
@@ -12,9 +12,16 @@
         .auto-style4 {
             height: 65px;
         }
+        .auto-style5 {
+            height: 65px;
+            width: 16px;
+        }
+        .auto-style6 {
+            width: 16px;
+        }
     </style>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <table style="width:100%;">
         <tr>
             <td class="auto-style4" colspan="2" style="font-style: normal; font-weight: bold; font-size: x-large; color: #000080;">Student With Corrective Exams&nbsp;</td>
@@ -22,7 +29,7 @@
         </tr>
         <tr>
             <td class="auto-style3">&nbsp;Department Name :&nbsp;</td>
-            <td class="auto-style4">
+            <td class="auto-style5">
                 <asp:DropDownList ID="DropDownList_Dept_Id" runat="server" AppendDataBoundItems="True" AutoPostBack="True" DataSourceID="Dept_Source" DataTextField="Dept_Name" DataValueField="Dept_Id" Width="200px">
                     <asp:ListItem Value="0">Choose Department</asp:ListItem>
                 </asp:DropDownList>
@@ -32,7 +39,7 @@
         </tr>
         <tr>
             <td class="auto-style2">&nbsp;</td>
-            <td>
+            <td class="auto-style6">
                 <asp:GridView ID="GridView1" runat="server" CellPadding="4" DataSourceID="Student_Source" ForeColor="#333333" GridLines="None" Width="446px">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <EditRowStyle BackColor="#999999" />
@@ -56,7 +63,7 @@
         </tr>
         <tr>
             <td class="auto-style2">&nbsp;</td>
-            <td>&nbsp;</td>
+            <td class="auto-style6">&nbsp;</td>
             <td>&nbsp;</td>
         </tr>
     </table>
