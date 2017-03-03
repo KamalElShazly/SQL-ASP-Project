@@ -31,6 +31,18 @@ public static class DepartmentLayer
                     WHERE Department.Dept_Id=" + Dept_Id.ToString();
         return DataAccessLayer.SelectCommand(s);
     }
+    public static DataSet CorrectivePerDept(int Dept_Id)
+
+    {
+        string s = @"select distinct St_Ex_Q.St_Id ID,St_Name Name
+                     from St_Ex_Q ,Exam ,St_Ins_Crs ,Student
+                     where St_Ex_Q.St_Id=St_Ins_Crs.St_Id and St_Ex_Q.Ex_Id=Exam.Ex_Id 
+                     and Exam.Crs_Id=St_Ins_Crs.Crs_Id and St_Grade < Ex_Grade/2 and Student.St_Id=St_Ins_Crs.St_Id
+                     and Student.Dept_Id=" + Dept_Id;
+
+        return DataAccessLayer.SelectCommand(s);
+
+    }
     public static int InsertDepartment(string Dept_Name, int? Mgr_Id)
     {
         string s = "Insert_Department";
@@ -39,7 +51,7 @@ public static class DepartmentLayer
         };
         return DataAccessLayer.DMLCommandSP(s, p);
     }
-    public static int UpdateDepartment(int Dept_Id,string Dept_Name, int? Mgr_Id)
+    public static int UpdateDepartment(int Dept_Id, string Dept_Name, int? Mgr_Id)
     {
         string s = "Update_Department";
         SqlParameter[] p = new SqlParameter[] { new SqlParameter("@Dept_Id", Dept_Id),

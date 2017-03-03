@@ -15,10 +15,17 @@
         .auto-style5 {
             height: 23px;
         }
+        .auto-style6 {
+            height: 52px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <table style="width:100%;">
+        <tr>
+            <td class="auto-style6" colspan="2" style="color: #000080; font-style: normal; font-size: x-large; font-weight: bold">Student With Corrective Exams</td>
+            <td class="auto-style6"></td>
+        </tr>
         <tr>
             <td class="auto-style3">&nbsp; Course Name:&nbsp;</td>
             <td>
