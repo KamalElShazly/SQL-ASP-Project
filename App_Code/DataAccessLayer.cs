@@ -24,6 +24,20 @@ public static class DataAccessLayer
         ad.Fill(ds);
         return ds;
     }
+    public static DataSet SelectCommandSP(string s, SqlParameter[] p)
+    {
+        SqlCommand cm = new SqlCommand();
+        cm.CommandType = CommandType.StoredProcedure;
+        cm.Connection = cn;
+        cm.CommandText = s;
+        cm.Parameters.Clear();
+        cm.Parameters.AddRange(p);
+        DataSet ds = new DataSet();
+        SqlDataAdapter ad = new SqlDataAdapter();
+        ad.SelectCommand = cm;
+        ad.Fill(ds);
+        return ds;
+    }
     public static int DMLCommand(string s)
     {
         SqlCommand cm = new SqlCommand();
