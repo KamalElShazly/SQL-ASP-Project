@@ -16,6 +16,7 @@
             <td class="auto-style2">Exam Date</td>
             <td class="auto-style3">
                 <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="ObjectDataSource_ExamDate" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="200px" DataTextField="Ex_Date" DataValueField="Ex_Date">
+                    <asp:ListItem></asp:ListItem>
                 </asp:DropDownList>
                 <asp:ObjectDataSource ID="ObjectDataSource_ExamDate" runat="server" SelectMethod="SelectExamDate" TypeName="ExamLayer"></asp:ObjectDataSource>
             </td>
@@ -25,7 +26,7 @@
             <td class="auto-style2">&nbsp;</td>
             <td class="auto-style3">&nbsp;</td>
             <td>
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ObjectDataSource_StudentExam" ForeColor="#333333" GridLines="None">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ObjectDataSource_StudentExam" ForeColor="#333333" GridLines="None" AllowPaging="True">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <Columns>
                         <asp:TemplateField HeaderText="Student ID">
