@@ -29,7 +29,7 @@ public class TopicLayer
         SqlParameter[] p = new SqlParameter[] { new SqlParameter("@Top_Id", Top_Id) };
         return DataAccessLayer.DMLCommandSP(s,p);
     }
-    public static int UpdateTopic(int Top_Id,string Top_Name,int Crs_Id)
+    public static int UpdateTopic(int Top_Id,string Top_Name, int Crs_Id)
     {
         string s = "Update_Topic";
         SqlParameter[] p = new SqlParameter[] { new SqlParameter("@Top_Id", Top_Id),
