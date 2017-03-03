@@ -30,13 +30,20 @@ public static class StudentLayer
                      WHERE exists(SELECT St_Id FROM St_Ins_Crs WHERE St_Ins_Crs.St_Id=Student.St_Id)";
         return DataAccessLayer.SelectCommand(s);
     }
+    public static DataSet SelectStudentResult()
+    {
+        string s = @"SELECT s.St_Id,s.St_Name,c.Crs_Name,cs.St_Grade
+                     FROM Student s,Course c,St_Ins_Crs cs
+                     WHERE s.St_Id = cs.St_Id and c.Crs_Id = cs.Crs_Id";
+        return DataAccessLayer.SelectCommand(s);
+    }
     public static int InsertStudent(string St_Name, int? St_Age, string St_Address,int? Dept_Id)
     {
         string s = "Insert_Student";
         SqlParameter[] p = new SqlParameter[] { new SqlParameter("@St_Name", St_Name),
             new SqlParameter("@St_Age", St_Age??SqlInt32.Null),
             new SqlParameter("@St_Address", St_Address??SqlString.Null) ,
-            new SqlParameter("@Dept_Id", Dept_Id??SqlInt32.Null) ,
+            new SqlParameter("@Dept_Id", Dept_Id??SqlInt32.Null)
         };
         return DataAccessLayer.DMLCommandSP(s, p);
     }
@@ -47,7 +54,7 @@ public static class StudentLayer
             new SqlParameter("@St_Name", St_Name),
             new SqlParameter("@St_Age", St_Age??SqlInt32.Null),
             new SqlParameter("@St_Address", St_Address??SqlString.Null) ,
-            new SqlParameter("@Dept_Id", Dept_Id??SqlInt32.Null) ,
+            new SqlParameter("@Dept_Id", Dept_Id??SqlInt32.Null)
         };
         return DataAccessLayer.DMLCommandSP(s, p);
     }
