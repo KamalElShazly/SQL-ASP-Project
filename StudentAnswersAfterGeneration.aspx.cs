@@ -43,7 +43,7 @@ public partial class StudentAnswersAfterGeneration : System.Web.UI.Page
         if (IsValid)
         {
             string[] Answers = HiddenField1.Value.Split(',');
-            ExamLayer.ExamAnswers("Kamal Elshazly",4,Answers[0], Answers[1], Answers[2], Answers[3], Answers[4], Answers[5], Answers[6], Answers[7], Answers[8], Answers[9]);
+            ExamLayer.ExamAnswers("Engy Abdelaziz", 9,Answers[0], Answers[1], Answers[2], Answers[3], Answers[4], Answers[5], Answers[6], Answers[7], Answers[8], Answers[9]);
         }
     }
 
