@@ -27,9 +27,9 @@
         <!-- end #header -->
         <div id="menu-wrapper">
             <ul id="menu">
-                <li class="current_page_item"><a href="#"><span>Homepage</span></a></li>
-                <li><a href="#"><span>Contact us</span></a></li>
-                <li><a href="#"><span>Login</span></a></li>
+                <li class="current_page_item"><a href="HomePage.aspx"><span>Homepage</span></a></li>
+                <li><a href="ContactUs.aspx"><span>Contact us</span></a></li>
+                <li><a href="Login.aspx"><span>Login</span></a></li>
             </ul>
             <script type="text/javascript">
                 $('#menu').dropotron();
