@@ -7,7 +7,7 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>Commercial by TEMPLATED</title>
+    <title>E-LEARING</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="http://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css" />
@@ -15,12 +15,13 @@
     
 </head>
 <body>
+    <form id="form1" runat="server">
     <div id="wrapper">
         <div id="header-wrapper">
             <div id="header">
                 <div id="logo">
-                    <h1><a href="#">Commercial</a></h1>
-                    <p>Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a></p>
+                    <h1><a href="#">E-LEARING</a></h1>
+                    <p>LEARN ONLINE</p>
                 </div>
             </div>
         </div>
@@ -41,46 +42,23 @@
         <div id="page">
             <div id="sidebar-bg">
                 <div id="sidebar">
-                    <ul>
-                        <li>
-                            <h2>Menu</h2>
-                        </li>
-                        <li>
-                            <asp:HyperLink ID="HyperLink2" runat="server" ForeColor="Black">Update Information</asp:HyperLink>
-                        </li>
-                        <li>
-                            <asp:HyperLink ID="HyperLink4" runat="server" ForeColor="Black">Students</asp:HyperLink>
-                        </li>
-                        <li>
-                            <h2>Blogroll</h2>
-                            <ul>
-                                <li><a href="#">Aliquam libero</a></li>
-                                <li><a href="#">Suspendisse iaculis mauris</a></li>
-                                <li><a href="#">Urnanet non molestie semper</a></li>
-                                <li><a href="#">Proin gravida orci porttitor</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <h2>Archives</h2>
-                            <ul>
-                                <li><a href="#">Aliquam libero</a></li>
-                                <li><a href="#">Consectetuer adipiscing elit</a></li>
-                                <li><a href="#">Suspendisse iaculis mauris</a></li>
-                                <li><a href="#">Urnanet non molestie semper</a></li>
-                                <li><a href="#">Proin gravida orci porttitor</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+                   <asp:TreeView runat="server" ID="TreeView1" Font-Bold="True" ForeColor="Black" ExpandDepth="0" Height="154px" Width="103px" >    
+                 <Nodes>    
+                   <asp:TreeNode Text="Home" NavigateUrl="~/Instructor/HomePage_Ins.aspx"/>    
+                    <asp:TreeNode Text="Update Info" NavigateUrl="~/Instructor/InstructorUpdateInfo.aspx" />  
+                 <asp:TreeNode Text="Students" NavigateUrl="~/Instructor/SpecficStudentInformatin_Ins.aspx"/>    
+                 </Nodes>    
+             </asp:TreeView> 
+             </div>
             </div>
             <!-- end #sidebar -->
             <div id="content">
-                <form id="form1" runat="server">
+                
                     <div>
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                         </asp:ContentPlaceHolder>
                     </div>
-                </form>
+                
             </div>
             <!-- end #content -->
             <div style="clear: both;">&nbsp;</div>
@@ -91,6 +69,7 @@
         <p>2012. Untitled. All rights reserved. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by <a href="http://fotogrph.com/">fotogrph</a>.</p>
     </div>
     <!-- end #footer -->
+        </form>
 </body>
 </html>
 
