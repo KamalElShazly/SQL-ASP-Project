@@ -27,7 +27,7 @@
         <!-- end #header -->
         <div id="menu-wrapper">
             <ul id="menu">
-                <li class="current_page_item"><a href="#"><span>Homepage</span></a></li>
+                <li><a href="HomaPage_Admin"><span>Homepage</span></a></li>
                 <li><a href="#"><span>Contact us</span></a></li>
                 <li><a href="#"><span>Login</span></a></li>
             </ul>
