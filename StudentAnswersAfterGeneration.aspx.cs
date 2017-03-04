@@ -12,11 +12,12 @@ public partial class StudentAnswersAfterGeneration : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            //SelectStudentExam();
+            SelectStudentExam();
         }
     }
     void SelectStudentExam()
     {
+        string[] QuestionAnswers = { "a", "b", "c", "d" };
         DataTable Questions = ExamLayer.SelectQuestionsInExam().Tables[0];
         int QCount = 1;
         Table1.Rows.Clear();
@@ -26,16 +27,17 @@ public partial class StudentAnswersAfterGeneration : System.Web.UI.Page
             QRow.Cells.Add(new TableCell() { Text = QCount++ + ". " + Question.ItemArray[0].ToString() });
             Table1.Rows.Add(QRow);
             TableRow ARow = new TableRow();
-            RadioButtonList AnswersList = new RadioButtonList();
+            RadioButtonList AnswerList = new RadioButtonList();
             for (int i = 1; i < Question.ItemArray.Length; i++)
             {
                 object Answer = Question.ItemArray[i];
                 if (Answer != DBNull.Value)
-                    AnswersList.Items.Add(Question.ItemArray[i].ToString());
+
+                    AnswerList.Items.Add(new ListItem
+                    { Text = Question.ItemArray[i].ToString(), Value = QuestionAnswers[i-1].ToString() });
             }
-            AnswersList.SelectedIndex = 0;
             TableCell tCell = new TableCell();
-            tCell.Controls.Add(AnswersList);
+            tCell.Controls.Add(AnswerList);
             ARow.Cells.Add(tCell);
             Table1.Rows.Add(ARow);
         }
@@ -44,7 +46,6 @@ public partial class StudentAnswersAfterGeneration : System.Web.UI.Page
 
     protected void ConfirmBtn_Click(object sender, EventArgs e)
     {
-        
 
     }
 }

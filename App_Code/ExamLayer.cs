@@ -11,11 +11,6 @@ using System.Data.SqlTypes;
 /// </summary>
 public static class ExamLayer
 {
-    //static void GenerateExam()
-    //{
-    //    string s = "Generate_Exam";
-
-    //}
     public static DataSet SelectQuestionsInExam()
     {
         string s = @"select q.Q_Body,
@@ -26,6 +21,11 @@ public static class ExamLayer
             from Ex_Q eq, Question q
             where Ex_Id = (select max(Ex_Id) from Exam) and eq.Q_Id=q.Q_Id
             order by q.Q_Type ";
+        return DataAccessLayer.SelectCommand(s);
+    }
+    public static DataSet SelectExamId()
+    {
+        string s = @"SELECT Ex_Id FROM Exam";
         return DataAccessLayer.SelectCommand(s);
     }
     public static int GenerateExam(string Crs_Name, int MCQ_No, int TF_No, int Ex_Dur)
