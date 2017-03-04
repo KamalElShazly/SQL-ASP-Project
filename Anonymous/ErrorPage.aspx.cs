@@ -16,15 +16,15 @@ public partial class ErrorPage : System.Web.UI.Page
     {
         if (Session["Role"].ToString() == "Admin")
         {
-            Response.Redirect("HomePage.aspx");
+            Response.Redirect("../Admin/HomePage_Admin.aspx");
         }
         else if (Session["Role"].ToString() == "Student")
         {
-            Response.Redirect("HomePage.aspx");
+            Response.Redirect("../Student/HomePage_St.aspx");
         }
         else if (Session["Role"].ToString() == "Instructor")
         {
-            Response.Redirect("HomePage.aspx");
+            Response.Redirect("../Instructor/HomePage_Ins.aspx");
         }
         else
         {
