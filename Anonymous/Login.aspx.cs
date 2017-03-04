@@ -23,7 +23,18 @@ public partial class Login : System.Web.UI.Page
             Session["ID"] = RegisteredUser.Tables[0].Rows[0].ItemArray[0];
             Session["Name"] = RegisteredUser.Tables[0].Rows[0].ItemArray[1];
             Session["Role"] = RegisteredUser.Tables[0].Rows[0].ItemArray[2];
-            Response.Redirect("HomePage.aspx");
+            if(Session["Role"].ToString() == "Admin")
+            {
+                Response.Redirect("../Admin/HomePage_Admin.aspx");
+            }
+            else if (Session["Role"].ToString() == "Instructor")
+            {
+                Response.Redirect("../Instructor/HomePage_Ins.aspx");
+            }
+            else if (Session["Role"].ToString() == "Student")
+            {
+                Response.Redirect("../Student/HomePage_St.aspx");
+            }
         }
         else
         {
