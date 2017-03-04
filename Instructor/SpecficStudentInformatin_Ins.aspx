@@ -15,7 +15,7 @@
         <tr>
             <td class="auto-style3">
                 <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" CellPadding="4" ForeColor="#333333" GridLines="None" DataKeyNames="St_Id">
-                    <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                    <AlternatingRowStyle BackColor="White" ForeColor="#284770" />
                     <Columns>
                         <asp:TemplateField HeaderText="Student-ID">
                             <ItemTemplate>
