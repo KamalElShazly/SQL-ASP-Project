@@ -42,7 +42,7 @@
         <div id="page">
             <div id="sidebar-bg">
                 <div id="sidebar">
-                   <asp:TreeView runat="server" ID="TreeView1" Font-Bold="True" ForeColor="Black" ExpandDepth="0" Height="154px" Width="103px" >    
+                   <asp:TreeView runat="server" ID="TreeView1" Font-Bold="True" ForeColor="Black" ExpandDepth="0" Height="154px" Width="103px" ShowLines="True" >    
                  <Nodes>    
                    <asp:TreeNode Text="Home" NavigateUrl="~/Instructor/HomePage_Ins.aspx"/>    
                     <asp:TreeNode Text="Update Info" NavigateUrl="~/Instructor/InstructorUpdateInfo.aspx" />  
@@ -66,7 +66,9 @@
         <!-- end #page -->
     </div>
     <div id="footer">
-        <p>2012. Untitled. All rights reserved. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by <a href="http://fotogrph.com/">fotogrph</a>.</p>
+       <p>2017. Untitled. All rights reserved.Follow Us <a href="http://templated.co" rel="nofollow">HERE</a>. </p>
+        <p> <a href="http://fotogrph.com/">About Us</a></p>
+
     </div>
     <!-- end #footer -->
         </form>

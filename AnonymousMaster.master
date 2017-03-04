@@ -19,8 +19,9 @@
         <div id="header-wrapper">
             <div id="header">
                 <div id="logo">
-                    <h1><a href="#">Commercial</a></h1>
-                    <p>Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a></p>
+                    <h1><a href="#">E-LEARING</a></h1>
+                    <p>LEARN ONLINE</p>
+
                 </div>
             </div>
         </div>
@@ -61,7 +62,9 @@
         <!-- end #page -->
     </div>
     <div id="footer">
-        <p>2012. Untitled. All rights reserved. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. Photos by <a href="http://fotogrph.com/">fotogrph</a>.</p>
+       <p>2017. Untitled. All rights reserved.Follow Us <a href="http://templated.co" rel="nofollow">HERE</a>. </p>
+        <p> <a href="http://fotogrph.com/">About Us</a></p>
+
     </div>
     <!-- end #footer -->
 </body>
