@@ -23,18 +23,18 @@
         <tr>
             <td class="auto-style2">Exam ID</td>
             <td>
-                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="ObjectDataSource_Exam" Width="200px">
+                <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="Exam" Width="200px" DataTextField="Ex_Id" DataValueField="Ex_Id">
                 </asp:DropDownList>
-                <asp:ObjectDataSource ID="ObjectDataSource_Exam" runat="server" SelectMethod="SelectExamId" TypeName="ExamLayer"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="Exam" runat="server" SelectMethod="SelectExamId" TypeName="ExamLayer"></asp:ObjectDataSource>
             </td>
             <td>&nbsp;</td>
         </tr>
         <tr>
             <td class="auto-style3">Student ID</td>
             <td class="auto-style1">
-                <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="ObjectDataSource_Student" DataTextField="St_Id" DataValueField="St_Id" Width="200px">
+                <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="Student" DataTextField="St_Name" DataValueField="St_Id" Width="200px">
                 </asp:DropDownList>
-                <asp:ObjectDataSource ID="ObjectDataSource_Student" runat="server" SelectMethod="SelectStudentsIdAndName" TypeName="StudentLayer"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="Student" runat="server" SelectMethod="SelectStudentsIdAndName" TypeName="StudentLayer"></asp:ObjectDataSource>
             </td>
             <td class="auto-style1"></td>
         </tr>
