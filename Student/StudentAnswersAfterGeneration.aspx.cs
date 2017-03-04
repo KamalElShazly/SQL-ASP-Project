@@ -10,16 +10,21 @@ public partial class StudentAnswersAfterGeneration : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["Role"].ToString() != "Student")
+        if (Session["Role"].ToString() != "Student" )
         {
             Response.Redirect("../Anonymous/ErrorPage.aspx");
         }
-        SelectStudentExam();
+        else if(Session["ExamID"] == null)
+        {
+            Response.Redirect("../Student/StudentExams.aspx");
+        }
+        if (!IsPostBack)
+            SelectStudentExam(int.Parse(Session["ExamID"].ToString()));
     }
-    void SelectStudentExam()
+    void SelectStudentExam(int Ex_Id)
     {
         string[] QuestionAnswers = { "a", "b", "c", "d" };
-        DataTable Questions = ExamLayer.SelectQuestionsInExamById(int.Parse(Request.QueryString["id"].ToString())).Tables[0];
+        DataTable Questions = ExamLayer.SelectQuestionsInExamById(Ex_Id).Tables[0];
         for (int q = 0; q < 10; q++)
         {
             TableRow QRow = new TableRow();
@@ -33,7 +38,7 @@ public partial class StudentAnswersAfterGeneration : System.Web.UI.Page
                 if (Answer != DBNull.Value)
 
                     AnswerList.Items.Add(new ListItem
-                    { Text = QuestionAnswers[i - 1].ToString()+". "+Questions.Rows[q].ItemArray[i].ToString(), Value = QuestionAnswers[i - 1].ToString() });
+                    { Text = QuestionAnswers[i - 1].ToString() + ". " + Questions.Rows[q].ItemArray[i].ToString(), Value = QuestionAnswers[i - 1].ToString() });
             }
             TableCell tCell = new TableCell();
             tCell.Controls.Add(AnswerList);
@@ -47,7 +52,9 @@ public partial class StudentAnswersAfterGeneration : System.Web.UI.Page
         if (IsValid)
         {
             string[] Answers = HiddenField1.Value.Split(',');
-            ExamLayer.ExamAnswers("Engy Abdelaziz", 9,Answers[0], Answers[1], Answers[2], Answers[3], Answers[4], Answers[5], Answers[6], Answers[7], Answers[8], Answers[9]);
+            ExamLayer.ExamAnswers(Session["Name"].ToString(), int.Parse(Session["ExamID"].ToString()), Answers[0], Answers[1], Answers[2], Answers[3], Answers[4], Answers[5], Answers[6], Answers[7], Answers[8], Answers[9]);
+            ExamLayer.ExamCorrection(Session["Name"].ToString(), int.Parse(Session["ExamID"].ToString()));
+            Response.Redirect("ExamResult.aspx");
         }
     }
 
@@ -55,9 +62,9 @@ public partial class StudentAnswersAfterGeneration : System.Web.UI.Page
     {
         string[] answers = HiddenField1.Value.Split(',');
         args.IsValid = true;
-        foreach(string answer in answers)
+        foreach (string answer in answers)
         {
-            if(answer == string.Empty)
+            if (answer == string.Empty)
             {
                 args.IsValid = false;
             }

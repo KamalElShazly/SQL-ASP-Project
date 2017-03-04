@@ -23,7 +23,7 @@ public static class ExamLayer
             order by q.Q_Type ";
         return DataAccessLayer.SelectCommand(s);
     }
-    public static DataSet SelectQuestionsInExamById(int Crs_Id)
+    public static DataSet SelectQuestionsInExamById(int Ex_Id)
     {
         string s = @"select q.Q_Body,
             (select q_choice from Q_Answers qs where q.Q_Id=qs.Q_Id and Q_Answer='a') Answer1,
@@ -31,8 +31,12 @@ public static class ExamLayer
             (select q_choice from Q_Answers qs where q.Q_Id=qs.Q_Id and Q_Answer='c') Answer3,
             (select q_choice from Q_Answers qs where q.Q_Id=qs.Q_Id and Q_Answer='d') Answer4
             from Ex_Q eq, Question q 
-            where Ex_Id = (select top(1)Ex_Id from Exam where Crs_Id = "+Crs_Id+
-            " order by newid()) and eq.Q_Id=q.Q_Id order by q.Q_Type ";
+            where Ex_Id = " + Ex_Id + " and eq.Q_Id=q.Q_Id order by q.Q_Type ";
+        return DataAccessLayer.SelectCommand(s);
+    }
+    public static DataSet SelectExamIdByCrsId(int Crs_Id)
+    {
+        string s = @"select top(1)Ex_Id from Exam where Crs_Id = " + Crs_Id + " order by newid()";
         return DataAccessLayer.SelectCommand(s);
     }
     public static DataSet SelectExamId()
@@ -69,6 +73,21 @@ public static class ExamLayer
         };
         return DataAccessLayer.DMLCommandSP(s, p);
     }
+    public static int ExamCorrection(string St_Name, int Ex_Id)
+    {
+        string s = "Exam_Correction";
+        SqlParameter[] p = new SqlParameter[] { new SqlParameter("@St_Name", St_Name),
+            new SqlParameter("@Ex_Id", Ex_Id) };
+        return DataAccessLayer.DMLCommandSP(s, p);
+    }
+
+    public static DataSet SelectExamResult(int St_Id, int Ex_Id)
+    {
+        string s = @"select St_Grade,Ex_Grade from St_Ins_Crs cs,Exam ex where St_Id = "+ St_Id +
+            " and cs.Crs_Id = ( select Crs_Id From Exam where Ex_Id = "+ Ex_Id + ") and Ex_Id = " + Ex_Id;
+        return DataAccessLayer.SelectCommand(s);
+    }
+
     public static DataSet SelectExamDate()
     {
         string s = @"Select distinct Ex_Date From St_Ex_Q";
@@ -79,7 +98,7 @@ public static class ExamLayer
     {
         string s = @"Select distinct Ex_Id,St_Ex_Q.St_Id,St_Name
                      From St_Ex_Q,Student
-                     Where St_Ex_Q.St_Id=Student.St_Id and Ex_Date='" + Ex_Date+"'";
+                     Where St_Ex_Q.St_Id=Student.St_Id and Ex_Date='" + Ex_Date + "'";
         return DataAccessLayer.SelectCommand(s);
 
     }
