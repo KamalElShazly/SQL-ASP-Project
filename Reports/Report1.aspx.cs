@@ -19,7 +19,7 @@ public partial class Reports_Report1 : System.Web.UI.Page
     protected void DropDownList1_SelectedIndexChanged1(object sender, EventArgs e)
     {
         DataSet ds = ReportsLayer.StudentByDepartment(int.Parse(DropDownList1.SelectedValue));
-
+        
         ReportDocument repdoc = new ReportDocument();
         repdoc.Load(Server.MapPath("Report1.rpt"));
         repdoc.SetDataSource(ds);

@@ -52,7 +52,7 @@
         </tr>
         <tr>
             <td colspan="2">
-                <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" AutoDataBind="true" />
+                <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" AutoDataBind="true" ToolPanelView="None" />
             </td>
             <td>&nbsp;</td>
         </tr>
