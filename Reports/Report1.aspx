@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage1.master" AutoEventWireup="true" CodeFile="Report1.aspx.cs" Inherits="Reports_Report1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.master" AutoEventWireup="true" CodeFile="Report1.aspx.cs" Inherits="Reports_Report1" %>
 
 <%@ Register assembly="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" namespace="CrystalDecisions.Web" tagprefix="CR" %>
 
@@ -21,7 +21,7 @@
         <tr>
             <td class="auto-style2">Department</td>
             <td>
-                <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="ObjectDataSource_Dept" DataTextField="Dept_Name" DataValueField="Dept_Id" Height="16px" Width="69px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged1">
+                <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="ObjectDataSource_Dept" DataTextField="Dept_Name" DataValueField="Dept_Id" Height="16px" Width="200px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged1">
                 </asp:DropDownList>
                 <asp:ObjectDataSource ID="ObjectDataSource_Dept" runat="server" SelectMethod="SelectDepartmentIdAndName" TypeName="DepartmentLayer"></asp:ObjectDataSource>
             </td>
