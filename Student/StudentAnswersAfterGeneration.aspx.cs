@@ -19,7 +19,7 @@ public partial class StudentAnswersAfterGeneration : System.Web.UI.Page
     void SelectStudentExam()
     {
         string[] QuestionAnswers = { "a", "b", "c", "d" };
-        DataTable Questions = ExamLayer.SelectQuestionsInExam().Tables[0];
+        DataTable Questions = ExamLayer.SelectQuestionsInExamById(int.Parse(Request.QueryString["id"].ToString())).Tables[0];
         for (int q = 0; q < 10; q++)
         {
             TableRow QRow = new TableRow();

@@ -16,7 +16,15 @@ public static class LoginLayer
         string s = "Select_Name_Role";
         SqlParameter[] p = new SqlParameter[] { new SqlParameter("@UserName", UserName),
             new SqlParameter("@Password", UserPassword) };
-        return DataAccessLayer.SelectCommandSP(s,p);
+        return DataAccessLayer.SelectCommandSP(s, p);
+    }
+    public static DataSet ChangePassword(string UserName, string UserPassword, string NewPassword)
+    {
+        string s = "ChangePassword";
+        SqlParameter[] p = new SqlParameter[] { new SqlParameter("@UserName", UserName),
+            new SqlParameter("@Password", UserPassword) ,
+            new SqlParameter("@NewPassword",NewPassword)};
+        return DataAccessLayer.SelectCommandSP(s, p);
     }
 
 }
