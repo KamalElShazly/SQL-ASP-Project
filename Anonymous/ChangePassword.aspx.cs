@@ -14,6 +14,6 @@ public partial class Anonymous_ChangePassword : System.Web.UI.Page
 
     protected void Insert_Bt_Click(object sender, EventArgs e)
     {
-
+        LoginLayer.ChangePassword(TextBox1.Text, TextBox2.Text, TextBox3.Text);
     }
 }

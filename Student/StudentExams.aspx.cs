@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 
 public partial class Student_StudentExams : System.Web.UI.Page
 {
@@ -17,6 +18,8 @@ public partial class Student_StudentExams : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        Response.Redirect("StudentAnswersAfterGeneration.aspx?id=" + DropDownList1.SelectedValue);
+        DataSet ds = ExamLayer.SelectExamIdByCrsId(int.Parse(DropDownList1.SelectedValue));
+        Session.Add("ExamID", (int)ds.Tables[0].Rows[0].ItemArray[0]) ;
+        Response.Redirect("StudentAnswersAfterGeneration.aspx");
     }
 }
