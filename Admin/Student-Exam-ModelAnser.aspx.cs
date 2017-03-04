@@ -9,6 +9,10 @@ public partial class Student_Exam_ModelAnser : System.Web.UI.Page
 {
    protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["Role"].ToString() != "Admin")
+        {
+            Response.Redirect("../Anonymous/ErrorPage.aspx");
+        }
         if (!Page.IsPostBack)
         {
             GridView2.SelectRow(0);

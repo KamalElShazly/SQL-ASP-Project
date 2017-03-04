@@ -9,7 +9,10 @@ public partial class CoursePage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["Role"].ToString() != "Admin")
+        {
+            Response.Redirect("../Anonymous/ErrorPage.aspx");
+        }
     }
 
     protected void Button_InsertCourse_Click(object sender, EventArgs e)

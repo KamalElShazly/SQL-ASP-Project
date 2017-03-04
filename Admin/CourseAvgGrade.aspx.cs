@@ -9,6 +9,9 @@ public partial class CourseAvgGrade : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["Role"].ToString() != "Admin")
+        {
+            Response.Redirect("../Anonymous/ErrorPage.aspx");
+        }
     }
 }

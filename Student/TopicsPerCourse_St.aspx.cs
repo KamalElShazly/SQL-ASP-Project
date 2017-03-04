@@ -9,7 +9,11 @@ public partial class TopicsPerCourse : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(!Page.IsPostBack)
+        if (Session["Role"].ToString() != "Student")
+        {
+            Response.Redirect("../Anonymous/ErrorPage.aspx");
+        }
+        if (!Page.IsPostBack)
         { 
             ObjectDataSource_Topic.SelectParameters["Crs_Id"].DefaultValue = ((Label)GridView_Crs.Rows[0].Cells[0].FindControl("Label_Crs_Id")).Text;
             ObjectDataSource_Topic.Select();

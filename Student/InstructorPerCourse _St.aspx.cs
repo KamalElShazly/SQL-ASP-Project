@@ -9,9 +9,13 @@ public partial class InstructorPerCourse_ : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+
+        if (Session["Role"].ToString() != "Student")
+        {
+            Response.Redirect("../Anonymous/ErrorPage.aspx");
+        }
         if (!Page.IsPostBack)
         {
-           
             InstructorDS.SelectParameters["Crs_Id"].DefaultValue = ((Label)GridView1.Rows[0].Cells[0].FindControl("cou_idlbl")).Text;
             InstructorDS.Select();
         }

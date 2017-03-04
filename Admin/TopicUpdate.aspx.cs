@@ -9,7 +9,10 @@ public partial class TopicUpdate : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["Role"].ToString() != "Admin")
+        {
+            Response.Redirect("../Anonymous/ErrorPage.aspx");
+        }
     }
 
     protected void DropDownList1_SelectedIndexChanged1(object sender, EventArgs e)

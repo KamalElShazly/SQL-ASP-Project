@@ -10,6 +10,10 @@ public partial class StudentAnswersAfterGeneration : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["Role"].ToString() != "Student")
+        {
+            Response.Redirect("../Anonymous/ErrorPage.aspx");
+        }
         SelectStudentExam();
     }
     void SelectStudentExam()

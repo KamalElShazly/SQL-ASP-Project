@@ -9,6 +9,10 @@ public partial class QuestionPerCourse : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["Role"].ToString() != "Admin")
+        {
+            Response.Redirect("../Anonymous/ErrorPage.aspx");
+        }
         if (!Page.IsPostBack)
         {
             QuestionSource.SelectParameters["Crs_Id"].DefaultValue = ((Label)GridView5.Rows[0].Cells[0].FindControl("cou_idlbl")).Text;

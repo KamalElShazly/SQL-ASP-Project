@@ -10,6 +10,10 @@ public partial class GenerateExam : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["Role"].ToString() != "Admin")
+        {
+            Response.Redirect("../Anonymous/ErrorPage.aspx");
+        }
     }
 
     protected void GenerateBtn_Click(object sender, EventArgs e)

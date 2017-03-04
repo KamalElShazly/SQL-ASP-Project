@@ -9,6 +9,10 @@ public partial class SrudentResults : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["Role"].ToString() != "Admin")
+        {
+            Response.Redirect("../Anonymous/ErrorPage.aspx");
+        }
         if (!Page.IsPostBack)
         {
             CourseSource.SelectParameters["st_id"].DefaultValue = ((Label)GridView_st.Rows[0].Cells[0].FindControl("Label_St_Id")).Text;
