@@ -17,11 +17,13 @@ public partial class Login : System.Web.UI.Page
 
     protected void LoginBtn_Click(object sender, EventArgs e)
     {
-        DataTable RegisteredUser = LoginLayer.CheckLogin(NameTxt.Text, PassTxt.Text).Tables[0];
-        if (RegisteredUser.Rows.Count > 0)
+        DataSet RegisteredUser = LoginLayer.CheckLogin(NameTxt.Text, PassTxt.Text);
+        if (RegisteredUser.Tables.Count > 0)
         {
-            Session["Name"] = RegisteredUser.Rows[0].ItemArray[0];
-            Session["Role"] = RegisteredUser.Rows[0].ItemArray[1];
+            Session["ID"] = RegisteredUser.Tables[0].Rows[0].ItemArray[0];
+            Session["Name"] = RegisteredUser.Tables[0].Rows[0].ItemArray[1];
+            Session["Role"] = RegisteredUser.Tables[0].Rows[0].ItemArray[2];
+            Response.Redirect("HomePage.aspx");
         }
         else
         {
