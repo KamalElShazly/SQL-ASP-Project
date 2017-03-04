@@ -38,6 +38,25 @@ public static class ExamLayer
         };
         return DataAccessLayer.DMLCommandSP(s, p);
     }
+    public static int ExamAnswers(string St_Name, int Ex_Id,
+        string Ans1, string Ans2, string Ans3, string Ans4, string Ans5, string Ans6, string Ans7, string Ans8, string Ans9, string Ans10)
+    {
+        string s = "Exam_Answers";
+        SqlParameter[] p = new SqlParameter[] { new SqlParameter("@St_Name", St_Name),
+            new SqlParameter("@Ex_Id", Ex_Id),
+            new SqlParameter("@Ans1", Ans1) ,
+            new SqlParameter("@Ans2", Ans2) ,
+            new SqlParameter("@Ans3", Ans3) ,
+            new SqlParameter("@Ans4", Ans4) ,
+            new SqlParameter("@Ans5", Ans5) ,
+            new SqlParameter("@Ans6", Ans6) ,
+            new SqlParameter("@Ans7", Ans7) ,
+            new SqlParameter("@Ans8", Ans8) ,
+            new SqlParameter("@Ans9", Ans9) ,
+            new SqlParameter("@Ans10", Ans10)
+        };
+        return DataAccessLayer.DMLCommandSP(s, p);
+    }
     public static DataSet SelectExamDate()
     {
         string s = @"Select distinct Ex_Date From St_Ex_Q";
