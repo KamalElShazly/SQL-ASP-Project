@@ -1,32 +1,27 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.master" AutoEventWireup="true" CodeFile="CoursesPerStudent.aspx.cs" Inherits="CoursesPerStudent" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage1.master" AutoEventWireup="true" CodeFile="TopicsPerCourse_St.aspx.cs" Inherits="TopicsPerCourse" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
         .auto-style2 {
-            width: 313px;
-        }
-        .auto-style3 {
-            margin-left: 0px;
+            width: 370px;
         }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <br />
-    <table style="width: 100%;">
+    <table style="width:100%;">
         <tr>
             <td class="auto-style2">
-                &nbsp;&nbsp;&nbsp;
-                <asp:GridView ID="GridView_student" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ObjectDataSource_Student" ForeColor="#333333" GridLines="None" AllowPaging="True" OnSelectedIndexChanging="GridView_student_SelectedIndexChanging">
+                <asp:GridView ID="GridView_Crs" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ObjectDataSource_Course" ForeColor="#333333" GridLines="None" OnSelectedIndexChanging="GridView1_SelectedIndexChanging">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
-                        <asp:TemplateField HeaderText="Student ID">
+                        <asp:TemplateField HeaderText="Course ID">
                             <ItemTemplate>
-                                <asp:Label ID="Label_St_Id" runat="server" Text='<%# Bind("St_Id") %>'></asp:Label>
+                                <asp:Label ID="Label_Crs_Id" runat="server" Text='<%# Bind("Crs_Id") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Student Name">
+                        <asp:TemplateField HeaderText="Course Name">
                             <ItemTemplate>
-                                <asp:Label ID="Label_St_Name" runat="server" Text='<%# Bind("St_Name") %>'></asp:Label>
+                                <asp:Label ID="Label_Crs_Name" runat="server" Text='<%# Bind("Crs_Name") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:CommandField ShowSelectButton="True" />
@@ -42,25 +37,20 @@
                     <SortedDescendingCellStyle BackColor="#D4DFE1" />
                     <SortedDescendingHeaderStyle BackColor="#15524A" />
                 </asp:GridView>
-                <asp:ObjectDataSource ID="ObjectDataSource_Student" runat="server" SelectMethod="SelectStudentWithCourse" TypeName="StudentLayer"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ObjectDataSource_Course" runat="server" SelectMethod="SelectCourse_Id_Name" TypeName="CourseLayer"></asp:ObjectDataSource>
             </td>
             <td>
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ObjectDataSource_Course" ForeColor="#333333" GridLines="None" CssClass="auto-style3" Width="343px">
+                <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ObjectDataSource_Topic" ForeColor="#333333" GridLines="None">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
-                        <asp:TemplateField HeaderText="Course ID">
+                        <asp:TemplateField HeaderText="Topic ID">
                             <ItemTemplate>
-                                <asp:Label ID="Label_crsid" runat="server" Text='<%# Bind("Crs_Id") %>'></asp:Label>
+                                <asp:Label ID="Label_top_id" runat="server" Text='<%# Bind("Top_Id") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Course Name">
+                        <asp:TemplateField HeaderText="Topic Name">
                             <ItemTemplate>
-                                <asp:Label ID="Label_CrsName" runat="server" Text='<%# Bind("Crs_Name") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Course Duration">
-                            <ItemTemplate>
-                                <asp:Label ID="Label_CrsDur" runat="server" Text='<%# Bind("Crs_Duration") %>'></asp:Label>
+                                <asp:Label ID="Label_Top_Name" runat="server" Text='<%# Bind("Top_Name") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -75,18 +65,17 @@
                     <SortedDescendingCellStyle BackColor="#D4DFE1" />
                     <SortedDescendingHeaderStyle BackColor="#15524A" />
                 </asp:GridView>
-                </td>
+                <asp:ObjectDataSource ID="ObjectDataSource_Topic" runat="server" SelectMethod="SelectTopicByCrsId" TypeName="TopicLayer">
+                    <SelectParameters>
+                        <asp:Parameter Name="Crs_Id" Type="Int32" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
+            </td>
             <td>&nbsp;</td>
         </tr>
         <tr>
             <td class="auto-style2">&nbsp;</td>
-            <td>
-                <asp:ObjectDataSource ID="ObjectDataSource_Course" runat="server" SelectMethod="SelectCoursesPerStudent" TypeName="CourseLayer">
-                    <SelectParameters>
-                        <asp:Parameter Name="St_Id" Type="Int32" />
-                    </SelectParameters>
-                </asp:ObjectDataSource>
-            </td>
+            <td>&nbsp;</td>
             <td>&nbsp;</td>
         </tr>
         <tr>
