@@ -14,4 +14,9 @@ public partial class Student_StudentExams : System.Web.UI.Page
             Response.Redirect("../Anonymous/ErrorPage.aspx");
         }
     }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("StudentAnswersAfterGeneration.aspx?id=" + DropDownList1.SelectedValue);
+    }
 }

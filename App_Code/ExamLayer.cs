@@ -23,6 +23,18 @@ public static class ExamLayer
             order by q.Q_Type ";
         return DataAccessLayer.SelectCommand(s);
     }
+    public static DataSet SelectQuestionsInExamById(int Crs_Id)
+    {
+        string s = @"select q.Q_Body,
+            (select q_choice from Q_Answers qs where q.Q_Id=qs.Q_Id and Q_Answer='a') Answer1,
+            (select q_choice from Q_Answers qs where q.Q_Id=qs.Q_Id and Q_Answer='b') Answer2,
+            (select q_choice from Q_Answers qs where q.Q_Id=qs.Q_Id and Q_Answer='c') Answer3,
+            (select q_choice from Q_Answers qs where q.Q_Id=qs.Q_Id and Q_Answer='d') Answer4
+            from Ex_Q eq, Question q 
+            where Ex_Id = (select top(1)Ex_Id from Exam where Crs_Id = "+Crs_Id+
+            " order by newid()) and eq.Q_Id=q.Q_Id order by q.Q_Type ";
+        return DataAccessLayer.SelectCommand(s);
+    }
     public static DataSet SelectExamId()
     {
         string s = @"SELECT Ex_Id FROM Exam";
