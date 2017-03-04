@@ -11,7 +11,7 @@ public partial class StudentPage : System.Web.UI.Page
     {
         if (Session["Role"].ToString() != "Admin")
         {
-            Response.Redirect("../Anonymous/ErrorPage.aspx");
+            Response.Redirect("ErrorPage.aspx");
         }
     }
 
