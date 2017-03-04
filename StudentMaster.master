@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage3.master.cs" Inherits="MasterPage" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="StudentMaster.master.cs" Inherits="MasterPage" %>
 
 <!DOCTYPE html>
 
@@ -27,9 +27,9 @@
         <!-- end #header -->
         <div id="menu-wrapper">
             <ul id="menu">
-                <li class="current_page_item"><a href="HomePage.aspx"><span>Homepage</span></a></li>
-                <li><a href="ContactUs.aspx"><span>Contact us</span></a></li>
-                <li><a href="Login.aspx"><span>Login</span></a></li>
+                <li class="current_page_item"><a href="#"><span>Homepage</span></a></li>
+                <li><a href="#"><span>Contact us</span></a></li>
+                <li><a href="#"><span>Login</span></a></li>
             </ul>
             <script type="text/javascript">
                 $('#menu').dropotron();
@@ -42,7 +42,37 @@
             <div id="sidebar-bg">
                 <div id="sidebar">
                     <ul>
-                        
+                        <li>
+                            <h2>Menu</h2>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="HyperLink2" runat="server" ForeColor="Black">Instructors</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="HyperLink4" runat="server" ForeColor="Black">Topics per Course</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="HyperLink5" runat="server" ForeColor="Black">Exams</asp:HyperLink>
+                        </li>
+                        <li>
+                            <h2>Blogroll</h2>
+                            <ul>
+                                <li><a href="#">Aliquam libero</a></li>
+                                <li><a href="#">Suspendisse iaculis mauris</a></li>
+                                <li><a href="#">Urnanet non molestie semper</a></li>
+                                <li><a href="#">Proin gravida orci porttitor</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h2>Archives</h2>
+                            <ul>
+                                <li><a href="#">Aliquam libero</a></li>
+                                <li><a href="#">Consectetuer adipiscing elit</a></li>
+                                <li><a href="#">Suspendisse iaculis mauris</a></li>
+                                <li><a href="#">Urnanet non molestie semper</a></li>
+                                <li><a href="#">Proin gravida orci porttitor</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>

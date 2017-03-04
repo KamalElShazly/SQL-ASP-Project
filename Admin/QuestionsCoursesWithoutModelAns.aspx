@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage1.master" AutoEventWireup="true" CodeFile="QuestionsCoursesWithoutModelAns.aspx.cs" Inherits="QuestionsCoursesWithoutModelAns" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.master" AutoEventWireup="true" CodeFile="QuestionsCoursesWithoutModelAns.aspx.cs" Inherits="QuestionsCoursesWithoutModelAns" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
