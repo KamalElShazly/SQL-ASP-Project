@@ -4,13 +4,9 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>Commercial by TEMPLATED</title>
+    <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-    <link href="http://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css" />
     <link href="style2.css" rel="stylesheet" type="text/css" media="screen" />
     
 </head>
@@ -32,9 +28,6 @@
                 <li><a href="ContactUs.aspx"><span>Contact us</span></a></li>
                 <li><a href="Login.aspx"><span>Login</span></a></li>
             </ul>
-            <script type="text/javascript">
-                $('#menu').dropotron();
-            </script>
         </div>
         <!-- end #menu -->
         <div id="splash">
@@ -62,8 +55,7 @@
         <!-- end #page -->
     </div>
     <div id="footer">
-       <p>2017. Untitled. All rights reserved.Follow Us <a href="http://templated.co" rel="nofollow">HERE</a>. </p>
-        <p> <a href="http://fotogrph.com/">About Us</a></p>
+       <p><br />2017. E-Learning. All rights reserved</p>
 
     </div>
     <!-- end #footer -->
