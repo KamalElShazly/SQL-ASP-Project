@@ -5,10 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Instructor_InstructorUpdateInfo : System.Web.UI.Page
+public partial class InstructorUpdateInfo : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["Role"].ToString() != "Instructor")
+        {
+            Response.Redirect("../Anonymous/ErrorPage.aspx");
+        }
     }
 }

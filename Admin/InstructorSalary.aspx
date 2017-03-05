@@ -65,7 +65,9 @@
         </tr>
         <tr>
             <td class="auto-style2">&nbsp;</td>
-            <td class="auto-style3">&nbsp;</td>
+            <td class="auto-style3">
+                <asp:RegularExpressionValidator ID="NumberExpr" runat="server" ErrorMessage="Number Only" ForeColor="Red" ToolTip="Number Only" ValidationExpression="^[0-9]*$" ControlToValidate="TextBox_SelectedId">Number Only</asp:RegularExpressionValidator>
+            </td>
             <td>
                 <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Select All" Width="100px" />
             </td>

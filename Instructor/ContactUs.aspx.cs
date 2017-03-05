@@ -9,6 +9,9 @@ public partial class ContactUs : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["Role"].ToString() != "Instructor")
+        {
+            Response.Redirect("../Anonymous/ErrorPage.aspx");
+        }
     }
 }

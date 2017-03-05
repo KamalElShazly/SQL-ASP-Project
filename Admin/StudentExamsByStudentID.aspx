@@ -26,7 +26,7 @@
         <tr>
             <td class="auto-style5"></td>
             <td class="auto-style7">
-                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanging="GridView2_SelectedIndexChanging" DataKeyNames="St_Id">
+                <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" DataKeyNames="St_Id" DataSourceID="ObjectDataSource1">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:TemplateField HeaderText="Student-ID">
@@ -59,11 +59,8 @@
             <td class="auto-style7"></td>
         </tr>
         <tr>
-            <td class="auto-style2">Select Student ID</td>
+            <td class="auto-style2">&nbsp;</td>
             <td>
-                <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="ObjectDataSource1" DataTextField="St_Id" DataValueField="St_Id" AppendDataBoundItems="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
-                    <asp:ListItem Value="0">Choose Student-ID </asp:ListItem>
-                </asp:DropDownList>
                 <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="SelectStudentsIdAndName" TypeName="StudentLayer"></asp:ObjectDataSource>
             </td>
             <td>&nbsp;</td>
@@ -72,7 +69,7 @@
             <td class="auto-style3">
                 <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="SelectStudentExamss" TypeName="InstructorLayer">
                     <SelectParameters>
-                        <asp:Parameter Name="St_Id" Type="Int32" />
+                        <asp:ControlParameter ControlID="GridView2" DefaultValue="" Name="St_Id" PropertyName="SelectedValue" Type="Int32" />
                     </SelectParameters>
                 </asp:ObjectDataSource>
             </td>
@@ -105,7 +102,6 @@
                                 <asp:Label ID="Label6" runat="server" Text='<%# Bind("St_Grade") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:CommandField HeaderText="Select" ShowSelectButton="True" />
                     </Columns>
                     <EditRowStyle BackColor="#7C6F57" />
                     <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />

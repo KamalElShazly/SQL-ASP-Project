@@ -95,16 +95,6 @@ public static class InstructorLayer
         };
         return DataAccessLayer.DMLCommandSP(s, p);
     }
-    public static int InstructorUpdatePerfonalInfo(int Ins_Id, string Ins_Name, int? Ins_Age, string Ins_Address)
-    {
-        string s = "InstructorUpdatePerfonalInfo";
-        SqlParameter[] p = new SqlParameter[] {new SqlParameter("@Ins_Id",Ins_Id),
-
-            new SqlParameter("@Ins_Name", Ins_Name),
-            new SqlParameter("@Ins_Age", Ins_Age??SqlInt32.Null),
-            new SqlParameter("@Ins_Address", Ins_Address??SqlString.Null)    };
-        return DataAccessLayer.DMLCommandSP(s, p);
-    }
     public static int DeleteInstructor(int Ins_Id)
     {
         string s = "Delete_Instructor";

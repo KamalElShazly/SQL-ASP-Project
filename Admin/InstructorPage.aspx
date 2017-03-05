@@ -1,25 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.master" AutoEventWireup="true" CodeFile="InstructorPage.aspx.cs" Inherits="InstructorPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <style type="text/css">
-        .auto-style6 {
-            height: 23px;
-        }
-
-        .auto-style7 {
-            height: 275px;
-        }
-
-        .auto-style8 {
-            height: 23px;
-            width: 15px;
-        }
-
-        .auto-style9 {
-            width: 15px;
-        }
-    </style>
-</asp:Content>
+    </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <table style="width: 100%;">
@@ -75,7 +57,7 @@
                         <asp:TemplateField HeaderText="Salary">
                             <EditItemTemplate>
                                 <asp:TextBox ID="inssaltex" runat="server" Text='<%# Bind("Ins_Salary") %>'></asp:TextBox>
-                                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="inssaltex" ErrorMessage="Salary is Number Only" ForeColor="Red" ToolTip="Salary is Number Only" ValidationExpression="\d">Salary is Number Only</asp:RegularExpressionValidator>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="inssaltex" ErrorMessage="Salary is Number Only" ForeColor="Red" ToolTip="Salary is Number Only" ValidationExpression="^[0-9]*\.?[0-9]*$">Salary is Number Only</asp:RegularExpressionValidator>
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="inssal_lbl" runat="server" Text='<%# Bind("Ins_Salary") %>'></asp:Label>
@@ -127,7 +109,7 @@
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td>Adress</td>
+            <td>Address</td>
             <td>
                 <asp:TextBox ID="tex_adress" runat="server" Width="200px"></asp:TextBox>
             </td>
@@ -137,7 +119,7 @@
             <td>Salary</td>
             <td>
                 <asp:TextBox ID="tex_sal" runat="server" Width="200px"></asp:TextBox>
-                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Salary is Number Only" ForeColor="Red" ToolTip="Salary is Number Only" ValidationExpression="\d*.\d*" ControlToValidate="tex_sal">Salary is Number Only</asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Salary is Number Only" ForeColor="Red" ToolTip="Salary is Number Only" ValidationExpression="^[0-9]*\.?[0-9]*$" ControlToValidate="tex_sal">Salary is Number Only</asp:RegularExpressionValidator>
             </td>
             <td>&nbsp;</td>
         </tr>

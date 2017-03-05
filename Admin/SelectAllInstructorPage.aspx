@@ -83,7 +83,7 @@
             <td class="auto-style7">Select By ID : </td>
             <td class="auto-style8">
                 <asp:TextBox ID="TextBox_SelectById" runat="server" Width="200px" ValidationGroup="SelectById"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox_SelectById" Display="Dynamic" ErrorMessage="*" ValidationGroup="SelectById"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox_SelectById" Display="Dynamic" ErrorMessage="*" ValidationGroup="SelectById" ForeColor="Red"></asp:RequiredFieldValidator>
             </td>
             <td class="auto-style9">
                 <asp:Button ID="Button_Se" runat="server" Text="Select By ID " Width="100px" OnClick="Button_Se_Click" ValidationGroup="SelectById" />
@@ -91,7 +91,9 @@
         </tr>
         <tr>
             <td class="auto-style2">&nbsp;</td>
-            <td class="auto-style3">&nbsp;</td>
+            <td class="auto-style3">
+                <asp:RegularExpressionValidator ID="NumberExpr" runat="server" ErrorMessage="Number Only" ForeColor="Red" ToolTip="Number Only" ValidationExpression="^[0-9]*$" ControlToValidate="TextBox_SelectById">Number Only</asp:RegularExpressionValidator>
+            </td>
             <td>
                 <asp:Button ID="Button_SelectAll" runat="server" Text="Select All" Width="100px" OnClick="Button_SelectAll_Click" />
             </td>

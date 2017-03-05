@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/InstructorMaster.master" AutoEventWireup="true" CodeFile="InstructorUpdateInfo.aspx.cs" Inherits="Instructor_InstructorUpdateInfo" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/InstructorMaster.master" AutoEventWireup="true" CodeFile="InstructorUpdateInfo.aspx.cs" Inherits="InstructorUpdateInfo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -38,23 +38,30 @@
                         <asp:TemplateField HeaderText="Address">
                             <EditItemTemplate>
                                 <asp:TextBox ID="ins_addrestex" runat="server" Text='<%# Bind("Ins_Address") %>'></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="ins_addrestex" ErrorMessage="*"></asp:RequiredFieldValidator>
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="insaddress_lbl" runat="server" Text='<%# Bind("Ins_Address") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Department">
+                            <EditItemTemplate>
+                                <asp:DropDownList ID="deptid_drop" runat="server" DataSourceID="ObjectDataSource2" DataTextField="Dept_Name" DataValueField="Dept_Id" Enabled="False" SelectedValue='<%# Bind("Dept_Id") %>'>
+                                </asp:DropDownList>
+                                <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="SelectDepartmentIdAndName" TypeName="DepartmentLayer"></asp:ObjectDataSource>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("dept_name") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Salary">
                             <EditItemTemplate>
-                                <asp:TextBox ID="inssaltex" runat="server" Text='<%# Bind("Ins_Salary") %>'></asp:TextBox>
-                                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="inssaltex" ErrorMessage="Salary is Number Only" ForeColor="Red" ToolTip="Salary is Number Only" ValidationExpression="\d">Salary is Number Only</asp:RegularExpressionValidator>
+                                <asp:Label ID="inssal_lbl" runat="server" Text='<%# Bind("Ins_Salary") %>'></asp:Label>
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="inssal_lbl" runat="server" Text='<%# Bind("Ins_Salary") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:CommandField ShowEditButton="True" HeaderText="Edit" />
-                        <asp:CommandField ShowDeleteButton="True" HeaderText="Delete" />
                     </Columns>
                     <EditRowStyle BackColor="#7C6F57" />
                     <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
@@ -67,15 +74,24 @@
                     <SortedDescendingCellStyle BackColor="#D4DFE1" />
                     <SortedDescendingHeaderStyle BackColor="#15524A" />
                 </asp:GridView>
-                <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="SelectInsructorById" TypeName="InstructorLayer">
-                    <SelectParameters>
-                        <asp:SessionParameter DefaultValue="Id" Name="id" SessionField="Id" Type="Int32" />
-                    </SelectParameters>
-                </asp:ObjectDataSource>
             </td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
+            <td>
+                <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="SelectInsructorById" TypeName="InstructorLayer" UpdateMethod="UpdateInstructor">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="id" SessionField="ID" Type="Int32" />
+                    </SelectParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="Ins_Id" Type="Int32" />
+                        <asp:Parameter Name="Ins_Name" Type="String" />
+                        <asp:Parameter Name="Ins_Age" Type="Int32" />
+                        <asp:Parameter Name="Ins_Address" Type="String" />
+                        <asp:Parameter Name="Dept_Id" Type="Int32" />
+                        <asp:Parameter Name="Ins_Salary" Type="Decimal" />
+                    </UpdateParameters>
+                </asp:ObjectDataSource>
+            </td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
         </tr>
