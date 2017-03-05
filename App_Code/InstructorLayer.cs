@@ -18,15 +18,15 @@ public static class InstructorLayer
     public static DataSet SelectStudentsIdAndDepartment(int St_Id)
     {
         string s = @"select i.*,ii.Dept_Name 
-from Student i , Department ii 
-where  i.Dept_Id=ii.Dept_Id AND i.St_Id= " + St_Id.ToString();
+            from Student i , Department ii 
+            where  i.Dept_Id=ii.Dept_Id AND i.St_Id= " + St_Id.ToString();
         return DataAccessLayer.SelectCommand(s);
     }
     public static DataSet SelectStudentCourseAndInstructor(int St_Id)
     {
         string s = @"select ii.Crs_Name,iii.Ins_Name,i.St_Grade
-from St_Ins_Crs i , Course ii,Instructor iii
-where  ii.Crs_Id= i.Crs_Id and iii.Ins_Id=i.Ins_Id and i.St_Id="+ St_Id.ToString();
+            from St_Ins_Crs i , Course ii,Instructor iii
+            where  ii.Crs_Id= i.Crs_Id and iii.Ins_Id=i.Ins_Id and i.St_Id="+ St_Id.ToString();
         return DataAccessLayer.SelectCommand(s);
     }
 
@@ -37,11 +37,8 @@ where  ii.Crs_Id= i.Crs_Id and iii.Ins_Id=i.Ins_Id and i.St_Id="+ St_Id.ToString
 	        (select q_choice from Q_Answers qs where q.Q_Id = qs.Q_Id and Q_Answer = 'b') Answer2,
 	        (select q_choice from Q_Answers qs where q.Q_Id = qs.Q_Id and Q_Answer = 'c') Answer3,
 	        (select q_choice from Q_Answers qs where q.Q_Id = qs.Q_Id and Q_Answer = 'd') Answer4
-     from question q, St_Ex_Q s
-      where s.Q_Id = q.Q_Id and s.St_Id =" + St_Id.ToString() + " and s.Ex_Id =" + Ex_Id.ToString();
-
-
-
+             from question q, St_Ex_Q s
+             where s.Q_Id = q.Q_Id and s.St_Id =" + St_Id.ToString() + " and s.Ex_Id =" + Ex_Id.ToString();
         return DataAccessLayer.SelectCommand(s);
     }
 
@@ -49,29 +46,21 @@ where  ii.Crs_Id= i.Crs_Id and iii.Ins_Id=i.Ins_Id and i.St_Id="+ St_Id.ToString
     {
         string s = @"select  distinct i.Ex_Id ,ii.*,iii.Crs_Name,iiii.St_Grade
                    from St_Ex_Q i ,Exam ii,Course iii ,St_Ins_Crs iiii
-              where ii.Ex_Id=i.Ex_Id  and iii.Crs_Id=ii.Crs_Id and iiii.Crs_Id=ii.Crs_Id and i.St_Id=iiii.St_Id and i.St_Id="+ St_Id.ToString();
+                   where ii.Ex_Id=i.Ex_Id  and iii.Crs_Id=ii.Crs_Id and iiii.Crs_Id=ii.Crs_Id 
+                    and i.St_Id=iiii.St_Id and i.St_Id="+ St_Id.ToString();
         return DataAccessLayer.SelectCommand(s);
     }
-    //public static DataSet SelectStudentExams(int St_Id)
-    //{
-    //    string s = @"select  distinct i.Ex_Id ,ii.*,iii.Crs_Name
-    //               from St_Ex_Q i ,Exam ii,Course iii
-    //          where ii.Ex_Id=i.Ex_Id  and iii.Crs_Id=ii.Crs_Id and i.St_Id=" + St_Id.ToString();
-    //    return DataAccessLayer.SelectCommand(s);
-    //}
     public static DataSet SelectInstructorIdAndName()
     {
         string s = @"SELECT Ins_Id,Ins_Name FROM Instructor";
         return DataAccessLayer.SelectCommand(s);
     }
-
-     
-
+    
     public static DataSet SelectInstructorByCourseID(int Crs_Id)
     {
           string s = @"select distinct i.Ins_Id,i.Ins_Name
-          from Instructor i,St_Ins_Crs ii
-          where i.Ins_Id=ii.Ins_Id and ii.Crs_Id="+ Crs_Id.ToString();
+                from Instructor i,St_Ins_Crs ii
+                where i.Ins_Id=ii.Ins_Id and ii.Crs_Id="+ Crs_Id.ToString();
          return DataAccessLayer.SelectCommand(s);
     }
     public static DataSet SelectAllInstructor()
@@ -106,6 +95,16 @@ where  ii.Crs_Id= i.Crs_Id and iii.Ins_Id=i.Ins_Id and i.St_Id="+ St_Id.ToString
         };
         return DataAccessLayer.DMLCommandSP(s, p);
     }
+    public static int InstructorUpdatePerfonalInfo(int Ins_Id, string Ins_Name, int? Ins_Age, string Ins_Address)
+    {
+        string s = "InstructorUpdatePerfonalInfo";
+        SqlParameter[] p = new SqlParameter[] {new SqlParameter("@Ins_Id",Ins_Id),
+
+            new SqlParameter("@Ins_Name", Ins_Name),
+            new SqlParameter("@Ins_Age", Ins_Age??SqlInt32.Null),
+            new SqlParameter("@Ins_Address", Ins_Address??SqlString.Null)    };
+        return DataAccessLayer.DMLCommandSP(s, p);
+    }
     public static int DeleteInstructor(int Ins_Id)
     {
         string s = "Delete_Instructor";
@@ -115,7 +114,7 @@ where  ii.Crs_Id= i.Crs_Id and iii.Ins_Id=i.Ins_Id and i.St_Id="+ St_Id.ToString
 
     public static DataSet SelectInsructorById(int id)
     {
-        string s = "SELECT * FROM Instructor where Ins_Id=" + id.ToString();
+        string s = "SELECT ii.* ,i.Dept_Name FROM Instructor ii,Department i where i.Dept_Id=ii.Dept_Id and Ins_Id=" + id.ToString();
         return DataAccessLayer.SelectCommand(s);
     }
     public static DataSet SelectIns_SalaryById(int id)
@@ -123,9 +122,6 @@ where  ii.Crs_Id= i.Crs_Id and iii.Ins_Id=i.Ins_Id and i.St_Id="+ St_Id.ToString
         string s = "SELECT Ins_Id,Ins_Name,Ins_Salary FROM Instructor where Ins_Id=" + id.ToString();
         return DataAccessLayer.SelectCommand(s);
     }
-
-
-
 
     public static DataSet SelectInstructorSalary()
     {

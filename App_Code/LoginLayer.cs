@@ -11,6 +11,12 @@ using System.Data.SqlTypes;
 /// </summary>
 public static class LoginLayer
 {
+    public static DataSet SelectLoginQuestionAndAnswer(string UserName)
+    {
+        string s = "select UserPassword,Question,Answer from Registeration where UserName = '" + UserName+"'";
+        return DataAccessLayer.SelectCommand(s);
+    }
+
     public static DataSet CheckLogin(string UserName, string UserPassword)
     {
         string s = "Select_Name_Role";
@@ -26,5 +32,11 @@ public static class LoginLayer
             new SqlParameter("@NewPassword",NewPassword)};
         return DataAccessLayer.SelectCommandSP(s, p);
     }
-
+    public static DataSet UpdateSecurityQuestion(string UserName, string Question, string Answer)
+    {
+        string s = "UpdateSecurityQuestion";
+        SqlParameter[] p = new SqlParameter[] { new SqlParameter("@UserName", UserName),
+        new SqlParameter("@Question", Question),new SqlParameter("@Answer", Answer)};
+        return DataAccessLayer.SelectCommandSP(s, p);
+    }
 }
