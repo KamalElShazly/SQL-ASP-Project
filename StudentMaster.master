@@ -28,9 +28,9 @@
         <!-- end #header -->
         <div id="menu-wrapper">
             <ul id="menu">
-                <li><a href="HomaPage_St"><span>Homepage</span></a></li>
-                <li><a href="#"><span>Contact us</span></a></li>
-                <li><a href="#"><span>Login</span></a></li>
+                <li><a href="HomePage.aspx"><span>Homepage</span></a></li>
+                <li><a href="ContactUs.aspx"><span>Contact us</span></a></li>
+                <li><a href="../Anonymous/Logout.aspx"><span>Logout</span></a></li>
             </ul>
             <script type="text/javascript">
                 $('#menu').dropotron();
@@ -42,14 +42,12 @@
         <div id="page">
             <div id="sidebar-bg">
                 <div id="sidebar">
-                   <asp:TreeView runat="server" ID="TreeView1" Font-Bold="True" ForeColor="Black" ExpandDepth="0" Height="199px" Width="118px" ShowLines="True" >    
+                   <asp:TreeView runat="server" ID="TreeView1" Font-Bold="True" ForeColor="Black" ExpandDepth="0" Width="118px" ShowLines="True" >    
                  <Nodes>    
-                   <asp:TreeNode Text="Home" NavigateUrl="~/Student/HomePage_St.aspx"/>    
-                    <asp:TreeNode Text="Instructors" NavigateUrl="~/Student/InstructorPerCourse_St.aspx" />  
-                 <asp:TreeNode Text="Topics per Course" NavigateUrl="~/Student/TopicsPerCourse_St.aspx"/>    
-                  <asp:TreeNode Text="Exams" NavigateUrl="~/Student/StudentExams.aspx"/>    
-                  <asp:TreeNode Text="Exams Results" NavigateUrl="~/Student/ExamResult.aspx"/>    
-                 <asp:TreeNode Text="Exam Answer" NavigateUrl="~/Student/StudentAnswersAfterGeneration.aspx"/> 
+                   <asp:TreeNode Text="Home" NavigateUrl="~/Student/HomePage.aspx"/>    
+                    <asp:TreeNode Text="Instructors" NavigateUrl="~/Student/InstructorPerCourse.aspx" />  
+                 <asp:TreeNode Text="Topics per Course" NavigateUrl="~/Student/TopicsPerCourse.aspx"/>    
+                  <asp:TreeNode Text="Exams" NavigateUrl="~/Student/StudentExams.aspx"/>      
                  </Nodes>    
              </asp:TreeView> 
                 </div>

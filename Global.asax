@@ -23,8 +23,10 @@
     void Session_Start(object sender, EventArgs e) 
     {
         // Code that runs when a new session is started
+        Session["ID"] = string.Empty;
         Session["Name"] = string.Empty;
         Session["Role"] = "Anonymous";
+        Session["ExamID"] = string.Empty;
     }
 
     void Session_End(object sender, EventArgs e) 

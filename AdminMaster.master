@@ -29,9 +29,9 @@
         <!-- end #header -->
         <div id="menu-wrapper">
             <ul id="menu">
-                <li><a href="HomaPage_Admin"><span>Homepage</span></a></li>
-                <li><a href="#"><span>Contact us</span></a></li>
-                <li><a href="#"><span>Login</span></a></li>
+                <li><a href="HomePage.aspx"><span>Homepage</span></a></li>
+                <li><a href="ContactUs.aspx"><span>Contact us</span></a></li>
+                <li><a href="../Anonymous/Logout.aspx"><span>Logout</span></a></li>
             </ul>
             <script type="text/javascript">
                 $('#menu').dropotron();
@@ -43,15 +43,15 @@
         <div id="page">
             <div id="sidebar-bg">
                 <div id="sidebar">
-                    <asp:TreeView runat="server" ID="TreeView1" Font-Bold="True" ForeColor="Black" ExpandDepth="0" Height="264px" Width="145px" ShowLines="True" >    
+                    <asp:TreeView runat="server" ID="TreeView1" Font-Bold="True" ForeColor="Black" ExpandDepth="0" Width="145px" ShowLines="True" >    
                  <Nodes>    
-                   <asp:TreeNode Text="Home" NavigateUrl="~/Admin/HomePage_Admin.aspx"/>    
+                   <asp:TreeNode Text="Home" NavigateUrl="~/Admin/HomePage.aspx"/>    
                     <asp:TreeNode Text="Students" >    
                       <asp:TreeNode Text="Info" NavigateUrl="~/Admin/StudentPage.aspx" />    
                       <asp:TreeNode Text="Exam Results" NavigateUrl="~/Admin/StudentResults.aspx"  />    
                       <asp:TreeNode Text="Exams by ID" NavigateUrl="~/Admin/StudentExamsByStudentID.aspx"  />  
                        <asp:TreeNode Text="Exam Model Ans" NavigateUrl="~/Admin/Student-Exam-ModelAnser.aspx"/>
-                        <asp:TreeNode Text="Brief Info" NavigateUrl="~/Admin/SpecficStudentInformatin.aspx" />
+                        <asp:TreeNode Text="Brief Info" NavigateUrl="~/Admin/SpecficStudentInformation.aspx" />
                         <asp:TreeNode Text="Exams by Date" NavigateUrl="~/Admin/ExamStudentsByDate.aspx"  /> 
                          <asp:TreeNode Text="Corrective per Course" NavigateUrl="~/Admin/CorrectivePerCourse.aspx" /> 
                          <asp:TreeNode Text="Corrective per Dept." NavigateUrl="~/Admin/CorrectivePerDept.aspx"  />  
@@ -65,10 +65,10 @@
                     <asp:TreeNode Text="Courses">    
                        <asp:TreeNode Text="Info" NavigateUrl="~/Admin/CoursePage.aspx" />    
                        <asp:TreeNode Text="Average Grade" NavigateUrl="~/Admin/CourseAvgGrade.aspx" />    
-                       <asp:TreeNode Text="Students per Course" NavigateUrl="~/Admin/CoursePerStudent.aspx"  />    
+                       <asp:TreeNode Text="Students per Course" NavigateUrl="~/Admin/CoursesPerStudent.aspx"  />    
                         <asp:TreeNode Text="Topics">    
                        <asp:TreeNode Text="Info" NavigateUrl="~/Admin/TopicPageMaster.aspx" />    
-                       <asp:TreeNode Text="Topics per Course" NavigateUrl="~/Admin/TopicPerCourse.aspx" />    
+                       <asp:TreeNode Text="Topics per Course" NavigateUrl="~/Admin/TopicsPerCourse.aspx" />    
                        <asp:TreeNode Text="Insert" NavigateUrl="~/Admin/TopicInsert.aspx"  />    
                        <asp:TreeNode Text="Update" NavigateUrl="~/Admin/TopicUpdate.aspx"  />    
                     <asp:TreeNode Text="Delete" NavigateUrl="~/Admin/TopicDelete.aspx" />    

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/InstructorMaster.master" AutoEventWireup="true" CodeFile="HomePage_Ins.aspx.cs" Inherits="HomePage_Ins" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/StudentMaster.master" AutoEventWireup="true" CodeFile="HomePage.aspx.cs" Inherits="HomePage" %>
 
 <%-- Add content controls here --%>
 <asp:Content ID="Content1" runat="server" contentplaceholderid="ContentPlaceHolder1">

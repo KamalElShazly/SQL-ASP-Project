@@ -28,9 +28,9 @@
         <!-- end #header -->
         <div id="menu-wrapper">
             <ul id="menu">
-                <li><a href="HomaPage_Ins"><span>Homepage</span></a></li>
-                <li><a href="#"><span>Contact us</span></a></li>
-                <li><a href="#"><span>Login</span></a></li>
+                <li><a href="HomePage.aspx"><span>Homepage</span></a></li>
+                <li><a href="ContactUs.aspx"><span>Contact us</span></a></li>
+                <li><a href="../Anonymous/Logout.aspx"><span>Logout</span></a></li>
             </ul>
             <script type="text/javascript">
                 $('#menu').dropotron();
@@ -42,11 +42,11 @@
         <div id="page">
             <div id="sidebar-bg">
                 <div id="sidebar">
-                   <asp:TreeView runat="server" ID="TreeView1" Font-Bold="True" ForeColor="Black" ExpandDepth="0" Height="154px" Width="103px" ShowLines="True" >    
+                   <asp:TreeView runat="server" ID="TreeView1" Font-Bold="True" ForeColor="Black" ExpandDepth="0"  Width="103px" ShowLines="True" >    
                  <Nodes>    
-                   <asp:TreeNode Text="Home" NavigateUrl="~/Instructor/HomePage_Ins.aspx"/>    
+                   <asp:TreeNode Text="Home" NavigateUrl="~/Instructor/HomePage.aspx"/>    
                     <asp:TreeNode Text="Update Info" NavigateUrl="~/Instructor/InstructorUpdateInfo.aspx" />  
-                 <asp:TreeNode Text="Students" NavigateUrl="~/Instructor/SpecficStudentInformatin_Ins.aspx"/>    
+                 <asp:TreeNode Text="Students" NavigateUrl="~/Instructor/SpecficStudentInformation.aspx"/>    
                  </Nodes>    
              </asp:TreeView> 
              </div>
